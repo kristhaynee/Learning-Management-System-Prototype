@@ -1,0 +1,120 @@
+.gradient-background {
+  background-image: linear-gradient(
+    to right,
+    #24b1d6,
+    #137995,
+    #21687b,
+    #166b81
+  );
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.secondary-color {
+  background-color: #ff9635;
+}
+
+.text-secondary-color {
+  color: #ff9635;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.font-weight {
+  font-weight: 500;
+}
+
+.paddingTB {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.padding-header {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.padding-auto {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.marginTB {
+  margin: 20px 0;
+}
+
+.btn-secondary-color {
+  background-color: #ff9635;
+}
+
+.btn-secondary-color:hover {
+  background-color: #a36a2a;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.nav-link:hover::after {
+  content: "";
+  opacity: 1;
+  height: 2px;
+  width: 100%;
+  background-color: #ff9635;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.sign-up_link {
+  color: #24b1d6;
+}
+
+.aboutUs-header {
+    min-height: 80vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 60, 106, 0.5), rgba(3, 19, 34, 0.5)), url(../images/AboutUs_BG.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.header-title{
+  margin-top: 200px
+}
+.header-text{
+text-align:justify;
+}
+
+.right-border{
+    border-right: #ff9635 4px solid;
+}
+.bottom-border{
+    border-bottom: #ff9635 4px solid;
+}
+
+.logo-footer{
+
+    width: 200px;
+}
+
+.logo-header{
+    width: 100px;
+}
+
+.contactUs-header{
+    min-height: 80vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 60, 106, 0.5), rgba(3, 19, 34, 0.5)), url(../images/ContactUs_BG.png);
+    background-position: center;
+    background-size: cover;
+}
