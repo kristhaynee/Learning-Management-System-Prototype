@@ -16,7 +16,7 @@
   <body class="gradient-background">
     <nav class="navbar navbar-expand-sm marginTB">
       <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#"><img class="logo-header" src="../images/Logo.png" alt=""></a>
 
         <button
           class="navbar-toggler"
@@ -33,19 +33,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active text-white px-3" aria-current="page" href="#">Home</a>
+                  <a
+                    class="nav-link active text-white px-3"
+                    aria-current="page"
+                    href="#"
+                    >Home</a
+                  >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white px-3" href="#">About</a>
+              <a class="nav-link text-white px-3" href="AboutUs.php">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white px-3" href="#">Contact</a>
+              <a class="nav-link text-white px-3" href="ContactUs.php">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white px-3" href="#">FAQs</a>
+              <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white px-3" href="#">My Account</a>
+              <a class="nav-link text-white px-3" href="Login.php">My Account</a>
             </li>
           </ul>
         </div>
@@ -53,22 +58,22 @@
     </nav>
 
     <section class="gradient-background">
-      <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-lg-5 py-5">
-          <div class="col-lg-7 text-center text-lg-start">
-            <h1 class="display-4 fw-bold lh-1 text-white mb-3">
+      <div class="container">
+        <div class="row align-items-center g-lg-1 py-2">
+          <div class="col-lg-6 text-center text-lg-start">
+            <h1 class="LoginSignup display-4 fw-bold lh-1 text-white mb-3">
                 Join PISA Today
             </h1>
             <p class="col-lg-10 fs-4 text-white">
               Ignite Your Learning Potenial, Empower Your Future through Education Excellence!
             </p>
-            <div class="login-img">
-              <img src="../images/sign-up.png" alt="">
+            <div>
+              <img src="../images/signup_img.png" class="signup-img" alt="">
              </div>
           </div>
 
           <div class="col-md-10 mx-auto col-lg-5">
-            <form class="shadow-lg p-4 p-md-5 border rounded-4 bg-body-tertiary">
+            <form class="shadow-lg p-4 p-md-4 border rounded-4 bg-body-tertiary">
               <h1 class="text-center text-secondary-color paddingTB">Sign up</h1>
               <div class="form-floating mb-3">
                 <input
@@ -113,7 +118,7 @@
               Sign up
             </button>
             <div class="text-center">
-              <p>Already have an account? <a class="sign-up_link" href="Login.html">Log in</a></p>
+              <p>Already have an account? <a class="sign-up_link" href="Login.php">Log in</a></p>
             </div>
             </form>
           </div>

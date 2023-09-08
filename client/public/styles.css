@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Poppins', sans-serif;
+  src: url(https://fonts.cdnfonts.com/css/poppins);
+}
+
 .gradient-background {
   background-image: linear-gradient(
     to right,
@@ -76,8 +81,19 @@ body {
   left: 0;
 }
 
+.JoinPisa{
+  font-family: 'Poppins', sans-serif;
+}
 .sign-up_link {
   color: #24b1d6;
+}
+
+.signup-img{
+  max-width: 30rem;
+}
+
+.login-img{
+  max-width: 29rem;
 }
 
 .aboutUs-header {
@@ -89,7 +105,7 @@ body {
 }
 
 .header-title{
-  margin-top: 200px
+  margin-top: 135px
 }
 .header-text{
 text-align:justify;
