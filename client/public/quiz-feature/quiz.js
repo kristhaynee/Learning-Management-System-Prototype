@@ -14,7 +14,7 @@ const questions = [
         { text: "2", correct: false },
         { text: "3", correct: false },
         { text: "6", correct: false },
-        { text: "8 of the above", correct: true },
+        { text: "8 ", correct: true },
       ],
     },
     {
@@ -23,7 +23,7 @@ const questions = [
         { text: "5 KMPL", correct: false },
         { text: "12 KMPL", correct: false },
         { text: "15 KMPL", correct: true },
-        { text: "17 KMPL of the above", correct: false },
+        { text: "17 KMPL ", correct: false },
       ],
     },
     {
@@ -33,7 +33,7 @@ const questions = [
         { text: "Arctic tern", correct: true },
         { text: "Swallow", correct: false },
         { text: "Crane", correct: false },
-        { text: "Penguin of the above", correct: false },
+        { text: "Penguin ", correct: false },
       ],
     },
     {
@@ -98,8 +98,10 @@ const questions = [
   const answerButtons = document.getElementById("answer-buttons");
   const nextButton = document.getElementById("next-btn");
   
-  
-  
+  const startButton = document.getElementById("btn-start")
+  const starter = document.querySelector('.starter')
+  const app = document.querySelector(".app")
+
   let currentQuestionIndex = 0;
   let score = 0;
   
@@ -107,6 +109,8 @@ const questions = [
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Next"
+    starter.style.display="none"
+    app.style.display="block"
     showQuestion();
   }
   
@@ -177,6 +181,8 @@ const questions = [
           startQuiz();
       }
   })
-  
-  startQuiz()
+
+
+
+  startButton.addEventListener('click', startQuiz)
   

@@ -8,8 +8,21 @@
     <script defer src="quiz.js"></script>
 </head>
 <body>
+    <div class="starter">
+        <h1>Instructions</h1>
+        <div class="instructions">
+            <ol>
+                <li>You will be asked 10 questions one after another</li>
+                <li>1 point is awarded for the correct answers</li>
+                <li>Each question has four options. You can choose only one option</li>
+                <li>The result will be declared at the end of the quiz</li>
+            </ol>
+        </div>
+        <button class="btn-start" id="btn-start">Start quiz</button>
+    </div>
+
     <div class="app">
-        <h1>Simple Quiz</h1>
+        <h1 id="numQuestions">Simple Quiz</h1>
         <div class="quiz">
             <h2 id="question">
             Question goes here
@@ -20,7 +33,9 @@
                 <button class="btn">Answer3</button>
                 <button class="btn">Answer4</button>
             </div>
-            <button id="next-btn">Next</button>
+            <div class="separate-btn">
+                <button id="next-btn">Next</button>
+            </div>
         </div>
     </div>
 </body>

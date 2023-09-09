@@ -22,6 +22,39 @@
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 0 10px 2px;
+    display: none;
+  }
+  
+  .starter{
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 10px 2px;
+  }
+  
+  .instructions{
+      margin-left: 15px;
+      line-height: 2;
+      margin-top: 20px;
+      text-align: left;
+      border-top: 1px solid #333;
+  }
+  
+  .btn-start{
+      background: #001e4d;
+      color: #fff;
+      font-weight: 500;
+      width: 150px;
+      border: 0;
+      padding: 10px;
+      margin: 20px auto 0;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
   }
   
   .app h1 {
@@ -64,17 +97,25 @@
       cursor: no-drop;
   }
   
-  #next-btn{
-      background: #001e4d;
+  .separate-btn{
+      display: flex;
+      flex-wrap: wrap;
+  }
+  
+  #next-btn, #prev-btn{
+      background: #04760b;
       color: #fff;
       font-weight: 500;
       width: 150px;
       border: 0;
-      padding: 10px;
+      padding: 10px 5px;
       margin: 20px auto 0;
       border-radius: 4px;
       cursor: pointer;
-      display: none;
+  }
+  
+  #prev-btn{
+      background: rgb(231, 174, 17);
   }
   
   .correct{
