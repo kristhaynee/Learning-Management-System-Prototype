@@ -16,7 +16,7 @@
   <body class="gradient-background">
     <nav class="navbar navbar-expand-sm marginTB">
       <div class="container">
-      <a class="navbar-brand" href="#"><img class="logo-header" src="../images/Logo.png" alt=""></a>
+      <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../images/Logo.png" alt=""></a>
 
         <button
           class="navbar-toggler"
@@ -36,7 +36,7 @@
                   <a
                     class="nav-link active text-white px-3"
                     aria-current="page"
-                    href="#"
+                    href="Homepage.php"
                     >Home</a
                   >
             </li>
@@ -67,7 +67,7 @@
             <p class="col-lg-10 fs-4 text-white">
               Log in to Navigate PISA's World of Education Excellence.
             </p>
-           <div>
+           <div class="imgContainer">
             <img src="../images/login-img.png" class="login-img" alt="">
            </div>
           </div>

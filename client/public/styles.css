@@ -88,20 +88,128 @@ body {
   color: #24b1d6;
 }
 
+.imgContainer{
+  max-width: 29rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .signup-img{
-  max-width: 30rem;
+  max-width: 100%;
 }
 
 .login-img{
-  max-width: 29rem;
+  max-width: 100%;
 }
+
+/* HOMEPAGE */
+
+.homepage-header{
+  min-height: 100vh;
+  width: 100%;
+  background-image:
+  linear-gradient(to bottom right, 
+    rgba(36, 178, 214, 0.8), 
+    rgba(19, 121, 149, 0.8), 
+    rgba(33, 104, 123, 0.8), 
+    rgba(4, 60, 106, 0.8)), 
+  url(../images/HomepageBG.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.banner-slogan{
+  margin-top: 12rem;
+}
+
+.homepage-header-title{
+  margin-top: 135px;
+  text-align: center;
+  font-family: 'Playfair display';
+  letter-spacing: 0.3rem;
+}
+
+.button-container-div {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.btn-assessment{
+  font-family: 'Poppins', sans-serif;
+  background-color: #ff9635;
+  color: #ffffff;
+  padding: 10px 40px;
+  border-radius: 10rem;
+  border: none;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btn-assessment span{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-assessment span::after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn-assessment:hover span {
+  padding-right: 25px;
+}
+
+.btn-assessment:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.first-sec-home{
+  background-color: #CACFD6;
+}
+
+.home-about{
+  font-family: 'Playfair display';
+  font-weight: 700;
+}
+
+.home-sect-two{
+  font-family: 'Playfair display';
+  font-size: 50px;
+}
+
+.vr {
+  width: 0.2rem !important;
+  background-color: #ff9635;
+  opacity: 100%;
+}
+
+.custom-max-width {
+  max-width: 60%;
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+/* HOMEPAGE */
 
 .aboutUs-header {
     min-height: 80vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4, 60, 106, 0.5), rgba(3, 19, 34, 0.5)), url(../images/AboutUs_BG.png);
-    background-position: center;
-    background-size: cover;
+    background-image:
+  linear-gradient(to bottom right, 
+    rgba(36, 178, 214, 0.8), 
+    rgba(19, 121, 149, 0.8), 
+    rgba(33, 104, 123, 0.8), 
+    rgba(4, 60, 106, 0.8)), 
+  url(../images/AboutUs_BG.png);
+  background-position: center;
+  background-size: cover;
 }
 
 .header-title{
@@ -127,10 +235,23 @@ text-align:justify;
     width: 100px;
 }
 
+/* CONTACT US */
 .contactUs-header{
     min-height: 80vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4, 60, 106, 0.5), rgba(3, 19, 34, 0.5)), url(../images/ContactUs_BG.png);
-    background-position: center;
-    background-size: cover;
+    background-image:
+  linear-gradient(to bottom right, 
+    rgba(36, 178, 214, 0.8), 
+    rgba(19, 121, 149, 0.8), 
+    rgba(33, 104, 123, 0.8), 
+    rgba(4, 60, 106, 0.8)), 
+  url(../images/ContactUs_BG.jpg);
+  background-position: center;
+  background-size: cover;
 }
+
+.contactUs{
+  font-family: 'Playfair display';
+  letter-spacing: 0.1rem;
+}
+/* END CONTACT US */

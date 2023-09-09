@@ -16,7 +16,7 @@
   <body class="gradient-background">
     <nav class="navbar navbar-expand-sm marginTB">
       <div class="container">
-      <a class="navbar-brand" href="#"><img class="logo-header" src="../images/Logo.png" alt=""></a>
+      <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../images/Logo.png" alt=""></a>
 
         <button
           class="navbar-toggler"
@@ -67,7 +67,7 @@
             <p class="col-lg-10 fs-4 text-white">
               Ignite Your Learning Potenial, Empower Your Future through Education Excellence!
             </p>
-            <div>
+            <div class="imgContainer" >
               <img src="../images/signup_img.png" class="signup-img" alt="">
              </div>
           </div>
