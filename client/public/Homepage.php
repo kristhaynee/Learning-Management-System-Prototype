@@ -85,7 +85,7 @@
             <h1 class="text-center home-about">
                 What is PISA?
             </h1>
-            <p class="lead text-center pt-4 lh-sm custom-max-width">
+            <p class="lead text-center fw-regular pt-4 lh-sm custom-max-width">
                 PISA is the OECD's Programme for International Student Assessment. PISA measures 15-year-olds’ ability to use their reading, mathematics and science knowledge and skills to meet real-life challenges.
             </p>
         </div>
@@ -96,19 +96,100 @@
         </div>
     </section>
 
-    <section class="container my-5">
-    <div class=" row g-lg-5 py-5">
-        <div class="col-sm-3 text-center text-lg-start">
-            <h3 class="display-4 fw-bold lh-1 text-body-emphasis mt-3 mb-3 home-sect-two"> 
+    <section class="container mt-5">
+    <div class="row g-lg-3 py-4"> <!-- Reduced the gutter between columns using g-lg-3 -->
+        <div class="col-sm-3 text-center">
+            <h3 class="display-4 fw-bold lh-1 mt-3 mb-3 home-sect-two"> 
                 PISA Test Assessment
             </h3>
         </div>
-        <div class="d-flex col-1" style="height: 150px; margin-right: -67px">
-            <div class="vr"></div>
-        </div>
-        <p class="col-md-7 align-middle"> 
+        
+        <div class="col-md-7 d-flex align-items-center">
+        <div class="vr"></div>
+            <p class="lead fw-regular text-middle fw-medium"> 
                 Explore and access comprehensive information about PISA (Programme for International Student Assessment) test assessments in this section.
-        </p>
+            </p>
+        </div>
+        <div class="col-2 d-flex align-items-center">
+            <button type="button" class="btn-assessment text-middle">
+                <span>View All</span>
+            </button>
+        </div>
     </div>
-  </section>
+
+    <section class="wrapper">
+    <div class="container-fostrap">
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="card">
+                            <a class="img-card" href="#">
+                            <img src="../images/assessment 1.jpg" />
+                          </a>
+                            <div class="card-content px-4">
+                                <h4 class="card-title">
+                                    <a href="#"> Lorem ipsum dolor
+                                  </a>
+                                </h4>
+                                <p class="">
+                                    Arcu bibendum at varius vel pharetra vel turpis nunc
+                                </p>
+                            </div>
+                            <div class="card-read-more">
+                                <a href="#" class="btn btn-link btn-block">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="card">
+                            <a class="img-card" href="#">
+                            <img src="../images/assessment 2.jpg" />
+                          </a>
+                          <div class="card-content px-4">
+                                <h4 class="card-title">
+                                    <a href="#"> Diam vulputate ut pharetra sit
+                                  </a>
+                                </h4>
+                                <p class="">
+                                    Turpis massa sed elementum tempus.
+                                </p>
+                            </div>
+                            <div class="card-read-more">
+                                <a href="#" class="btn btn-link btn-block">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="card">
+                            <a class="img-card" href="#">
+                            <img src="../images/assessment 3.jpg" />
+                          </a>
+                          <div class="card-content px-4">
+                                <h4 class="card-title">
+                                    <a href="#">Odio euismod lacinia at quis
+                                  </a>
+                                </h4>
+                                <p class="text-truncate">
+                                    Commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Amet est placerat in egestas erat imperdiet
+                                </p>
+                            </div>
+                            <div class="card-read-more">
+                                <a href="#" class="btn btn-link btn-block">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+
 
