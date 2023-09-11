@@ -11,7 +11,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
   </head>
@@ -118,11 +118,11 @@
     </div>
   </section>
 
-    <section class="gradient-background">
-
+<!-- Footer -->
+<section class="gradient-background">
       <footer class="container py-5 text-white">
         <div class="row">
-          <div class="col-sm-6 col-md-6 offset-md-1 mb-3">
+          <div class="col-sm-6 col-md-6 mb-3">
             <form>
               <img class="logo-footer" src="../images/Logo.png" alt="PISA">
               <p class="py-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
@@ -179,4 +179,3 @@
       ></script>
   </body>
   </html>
-  

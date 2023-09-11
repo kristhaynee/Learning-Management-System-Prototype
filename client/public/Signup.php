@@ -10,7 +10,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
   </head>
 
   <body class="gradient-background">
@@ -36,7 +36,7 @@
                   <a
                     class="nav-link active text-white px-3"
                     aria-current="page"
-                    href="#"
+                    href="Homepage.php"
                     >Home</a
                   >
             </li>

@@ -11,7 +11,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
   </head>
@@ -79,14 +79,15 @@
     </header>
 
     <section>
-      <div class="container text-start my-5">
+      <div class="container text-start aboutUs-sectionOne-margin">
         <div class="row">
-          <div class="col-sm-3">
-            <h1 class="fw-bolder right-border">What We're All About</h1>
+          <div class="col-sm-3 text-center">
+            <h1 class="display-4 fw-bold lh-1 mt-3 mb-3 home-sect-two">What We're All About</h1>
           </div>
           <div class="col-sm-9">
             <div class="row">
-              <div class="col-12">
+              <div class="col-12 d-flex">
+              <div class="vr"></div>
                 <p>
                   PISA is a worldwide study that assesses and compares the
                   educational performance of 15-year-old students in various
@@ -167,7 +168,7 @@
       </div>
     </section>
 
-    <section class="mt-5">
+    <section class="mt-5 aboutUs-sectionThree-margin">
       <article class="container my-5" id="accordion">
         <div
           class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2"
@@ -310,11 +311,11 @@
       </article>
     </section>
 
-    <section class="gradient-background">
-
+ <!-- Footer -->
+<section class="gradient-background">
       <footer class="container py-5 text-white">
         <div class="row">
-          <div class="col-sm-6 col-md-6 offset-md-1 mb-3">
+          <div class="col-sm-6 col-md-6 mb-3">
             <form>
               <img class="logo-footer" src="../images/Logo.png" alt="PISA">
               <p class="py-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
@@ -371,4 +372,3 @@
       ></script>
   </body>
   </html>
-  

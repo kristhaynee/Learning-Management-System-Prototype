@@ -11,7 +11,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
   </head>
@@ -96,7 +96,7 @@
         </div>
     </section>
 
-    <section class="container mt-5">
+    <section class="container my-5">
     <div class="row g-lg-3 py-4"> <!-- Reduced the gutter between columns using g-lg-3 -->
         <div class="col-sm-3 text-center">
             <h3 class="display-4 fw-bold lh-1 mt-3 mb-3 home-sect-two"> 
@@ -111,9 +111,9 @@
             </p>
         </div>
         <div class="col-2 d-flex align-items-center">
-            <button type="button" class="btn-assessment text-middle">
+            <a type="button" class="btn-assessment text-middle" href="testAssessment.php">
                 <span>View All</span>
-            </button>
+            </a>
         </div>
     </div>
 
@@ -129,10 +129,10 @@
                           </a>
                             <div class="card-content px-4">
                                 <h4 class="card-title">
-                                    <a href="#"> Lorem ipsum dolor
+                                    <a href="#"> Lorem ipsum dolor varius vel pharetra
                                   </a>
                                 </h4>
-                                <p class="">
+                                <p class="text-truncate">
                                     Arcu bibendum at varius vel pharetra vel turpis nunc
                                 </p>
                             </div>
@@ -153,7 +153,7 @@
                                     <a href="#"> Diam vulputate ut pharetra sit
                                   </a>
                                 </h4>
-                                <p class="">
+                                <p class="text-truncate">
                                     Turpis massa sed elementum tempus.
                                 </p>
                             </div>
@@ -191,5 +191,68 @@
     </div>
 </section>
 </section>
+
+<!-- Footer -->
+<section class="gradient-background">
+      <footer class="container py-5 text-white">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 mb-3">
+            <form>
+              <img class="logo-footer" src="../images/Logo.png" alt="PISA">
+              <p class="py-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+              </p>
+            </form>
+          </div>
+
+          <div class="col-sm-3 col-md-3 mb-3">
+            <h5>Quick links</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Contact</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-sm-3 col-md-2 mb-3">
+            <h5>Contact info</h5>
+            <ul class="nav flex-column">
+            <li class="nav-item mb-2 "><a href="#" class="nav-link p-0 text-white">Address</a>
+            <p>123 Fifth Avenue, New York, NY 10160</p>
+            </li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Phone</a>
+            <p>929-242-6868</p></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Email</a>
+            <p>contact@info.com</p></li>
+          </ul>
+        </div>
+
+   
+      </div>
+      
+  <div class="row">
+    <div class="col">
+      <img class="mx-2 my-2" src="../images/facebook.svg" alt="facebook">
+      <img class="mx-2 my-2" src="../images/twitter.svg" alt="twitter">
+      <img class="mx-2 my-2" src="../images/instagram.svg" alt="instagram">
+      <img class="mx-2 my-2" src="../images/youtube.svg" alt="youtube">
+      <img class="mx-2 my-2" src="../images/linkedin.svg" alt="linkedin">
+      <img class="mx-2 my-2" src="../images/share-fill.svg" alt="share">
+    </div>
+    <div class="col text-end">
+      Copyright &copy; 2023 PISA
+    </div>
+  </div>
+    </footer>
+  </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+      ></script>
+  </body>
+  </html>
+  
 
 
