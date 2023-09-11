@@ -419,6 +419,11 @@ background-size: cover;
     background-color: #ff9635;
     color: white;
   }
+
+  .filter-dropdown-design{
+    color: #505050;
+    font-size: 17px;
+  }
 /* search bar */
 
 .assessment-title-custom{

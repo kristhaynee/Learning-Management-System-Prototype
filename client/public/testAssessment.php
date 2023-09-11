@@ -11,6 +11,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
@@ -20,7 +21,7 @@
   <body>
     <header>
       <div class="testAssessment-header">
-        <nav class="navbar navbar-expand-sm padding-TB">
+        <nav class="navbar navbar-expand-sm">
           <div class="container">
             <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../images/Logo.png" alt=""></a>
 
@@ -84,31 +85,37 @@
 
     <!-- Searchbar -->
     <section class="mt-4">
-    <div class="container">
-    <br/>
-	<div class="row justify-content-center">
-        <form class="card card-sm">
-            <div class="card-body row no-gutters align-items-center">
-                <div class="col-auto">
-                    <i class="fas fa-search h4 text-body"></i>
+    <div class="container w-75">
+        <br/>
+        <div class="row justify-content-center">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <!-- Category Filter Dropdown -->
+                    <div class="col-auto">
+                        <select class="form-control form-control-lg filter-dropdown-design">
+                            <option value="all">Filter by Subject</option>
+                            <option value="category1">Math</option>
+                            <option value="category2">Science</option>
+                            <!-- Add more categories as needed -->
+                        </select>
+                    </div>
+                    <!-- Search Text Input -->
+                    <div class="col">
+                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search Assessments or keywords">
+                    </div>
+                    <!-- Search Button -->
+                    <div class="col-auto">
+                        <button class="btn btn-lg srch-btn-color" type="submit">Search</button>
+                    </div>
                 </div>
-                <!--end of col-->
-                <div class="col">
-                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search Assessments or keywords">
-                </div>
-                <!--end of col-->
-                <div class="col-auto">
-                    <button class="btn btn-lg srch-btn-color" type="submit">Search</button>
-                </div>
-                <!--end of col-->
-            </div>
-        </form>
-    </div>
-    <!--end of col-->
+            </form>
+        </div>
     </div>
     <div class="col-12 col-md-10 col-lg-8 mt-4">
     </div>
-    </section>
+</section>
+
+
     <!-- Searchbar -->
 
     <!-- assessment list -->
