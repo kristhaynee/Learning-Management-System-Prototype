@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Test Assessments</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -65,15 +65,15 @@
         </nav>
         <div class="container flex-lg-row-reverse align-items-center g-5">
           <div class="col-10 col-sm-8 col-lg-6"></div>
-          <div class="col-lg-6">
+          <div class="col-lg-8">
             <h1 class="display-5 fw-bold lh-1 mb-3 text-white header-title">
-                Explore Our Comprehensive Test Assessment Library
+              Unlocking Excellence
             </h1>
             <p class="lead text-white header-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              iure adipisci molestiae provident temporibus itaque quaerat
-              necessitatibus eum nemo assumenda magni ipsam pariatur, veniam
-              quas dolorem repellat rem voluptas corporis?
+              Discover a comprehensive collection of standardized tests and assessments 
+              meticulously curated for educational excellence. Explore a diverse 
+              range of assessments designed to support the mission of the Programme for 
+              International Student Assessment (PISA) and empower global education initiatives.
             </p>
           </div>
         </div>
@@ -122,13 +122,13 @@
     <section class="mb-5">
     <div class="d-flex justify-content-center">
         <div class="card w-75 p-4 custom-border">
-            <div class="row ">
+            <div class="d-flex">
                 <div class="col-md-8">
                     <h5 class="card-title assessment-title-custom">Assessment Title Lorem ipsum dolor sit amet</h5>
                     <p class="card-text"><span>Posted by </span><strong>Teacher's Name</strong></p>
                     <p class="assessment-tags">#assessments #tags #here</p>
                 </div>
-                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <div class="col-md-3 align-items-center justify-content-center">
                     <a type="button" class="btn-takeAssessment text-middle" href="#">
                         <span>Take Assessment</span>
                     </a>
@@ -138,13 +138,13 @@
     </div>
     <div class="d-flex justify-content-center">
         <div class="card w-75 p-4 custom-border">
-            <div class="row ">
+            <div class="d-flex">
                 <div class="col-md-8">
                     <h5 class="card-title assessment-title-custom">Assessment Title Lorem ipsum dolor sit amet</h5>
                     <p class="card-text"><span>Posted by </span><strong>Teacher's Name</strong></p>
                     <p class="assessment-tags">#assessments #tags #here</p>
                 </div>
-                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <div class="col-md-3 align-items-center justify-content-center">
                     <a type="button" class="btn-takeAssessment text-middle" href="#">
                         <span>Take Assessment</span>
                     </a>
