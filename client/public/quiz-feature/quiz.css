@@ -12,7 +12,7 @@ body{
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-  background-color: #0083bb;
+  background-color: #24b1d6;
 }
 
 h1{
@@ -21,10 +21,13 @@ h1{
 }
 
 .quiz-container, .result-container{
+  padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   min-width:400px;
-  box-shadow: 0 0 10px 2px rgba(100,100,100, 0.1);
+  max-width:500px;
+
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .quiz-header{
@@ -33,7 +36,7 @@ h1{
 
 h2{
   padding:10px;
-  text-align: center;
+  text-align: justify;
   font-size:16px;
   text-transform: capitalize;
 }
@@ -69,8 +72,8 @@ label{
 label:before{
 
   content:"";
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
   border: 2px solid #222;
   border-radius: 50%;
   margin-right:20px;
@@ -84,8 +87,8 @@ input[type="radio"]:checked+label::before{
 
 .actions{
   display: flex;
-  justify-content: center;
-  gap:10px;
+  justify-content: space-between;
+  gap:1rem;
   padding:10px;
 }
 

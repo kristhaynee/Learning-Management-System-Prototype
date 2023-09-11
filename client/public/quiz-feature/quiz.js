@@ -107,7 +107,7 @@ let userSelected = {};
 
 loadQuiz();
 function loadQuiz() {
-  questionEle.innerText = quizData[currentQuestion].question;
+  questionEle.innerText =   `${currentQuestion + 1}. ` + quizData[currentQuestion].question;
   a_text.innerText = quizData[currentQuestion].a;
   b_text.innerText = quizData[currentQuestion].b;
   c_text.innerText = quizData[currentQuestion].c;
