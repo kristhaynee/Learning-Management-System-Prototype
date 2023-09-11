@@ -491,3 +491,79 @@ background-size: cover;
 }
 
 /* END TEST ASSESSMENT */
+
+/* FAQS PAGE */
+.faqs-header {
+  min-height: 80vh;
+  width: 100%;
+  background-image:
+linear-gradient(to bottom right, 
+  rgba(36, 178, 214, 0.8), 
+  rgba(19, 121, 149, 0.8), 
+  rgba(33, 104, 123, 0.8), 
+  rgba(4, 60, 106, 0.8)), 
+url(../images/faqs_BG.jpg);
+background-position: center;
+background-size: cover;
+}
+
+
+.col-md-8 {
+  flex: 0 0 auto;
+  width: 70% !important;
+}
+
+/* left side */
+
+.fixed-column {
+  position: sticky;
+  top: 0;
+  height: 70vh; /* Adjust this value as needed to control the fixed column height */
+  background-color: #f0f0f0; /* Optional: Set a background color for the fixed column */
+}
+
+.card-faqs{
+  box-shadow: none !important;
+  display: block;
+  margin-bottom: 20px;
+  line-height: 3;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.category-item{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin: 20px 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.category-item:hover{
+  color: #ff9635;
+}
+
+.category-item.active {
+  color: #ff9635;
+}
+
+.category-list{
+  padding-top: 75px;
+}
+
+/* right side | Accordion */
+.scrollable-column {
+  overflow-y: scroll;
+  height: 80vh;
+  scrollbar-width: none;
+    -webkit-scrollbar-width: none;
+}
+.scrollable-column::-webkit-scrollbar {
+  display: none;
+}
+
+.accordion {
+  border: 1.5px solid #ccc;
+  border-radius: 5px; /* Optional: Add rounded corners */
+}
+/* END FAQS PAGE */
