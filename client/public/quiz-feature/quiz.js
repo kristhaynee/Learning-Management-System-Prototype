@@ -1,188 +1,237 @@
-const questions = [
-    {
-      question: "What is the first layer of the earth?",
-      answers: [
-        { text: "curst", correct: true },
-        { text: "mantle", correct: false },
-        { text: "core", correct: false },
-        { text: "none of the above", correct: false },
-      ],
-    },
-    {
-      question: "How many legs does a butterfly have?",
-      answers: [
-        { text: "2", correct: false },
-        { text: "3", correct: false },
-        { text: "6", correct: false },
-        { text: "8 ", correct: true },
-      ],
-    },
-    {
-      question: "What is the maximum running land speed of Crocodile?",
-      answers: [
-        { text: "5 KMPL", correct: false },
-        { text: "12 KMPL", correct: false },
-        { text: "15 KMPL", correct: true },
-        { text: "17 KMPL ", correct: false },
-      ],
-    },
-    {
-      question:
-        "Name the bird that migrates from the north pole to the south pole and back?",
-      answers: [
-        { text: "Arctic tern", correct: true },
-        { text: "Swallow", correct: false },
-        { text: "Crane", correct: false },
-        { text: "Penguin ", correct: false },
-      ],
-    },
-    {
-      question: "What is the longes snake in the world?",
-      answers: [
-        { text: "Black Mamba", correct: false },
-        { text: "Puff adder", correct: true },
-        { text: "Reticulated Python", correct: false },
-        { text: "Anaconda", correct: false },
-      ],
-    },
-    {
-      question: "Which one of the following is not a true snake?",
-      answers: [
-        { text: "Blind snake", correct: true },
-        { text: "Glass snake", correct: false },
-        { text: "Sea snake", correct: false },
-        { text: "Tree snake", correct: false },
-      ],
-    },
-    {
-      question: "What is a rhinos horn made of?",
-      answers: [
-        { text: "Bones", correct: true },
-        { text: "Collagen", correct: false },
-        { text: "Fibroin", correct: false },
-        { text: "Kerotin", correct: false },
-      ],
-    },
-    {
-      question:
-        "The peiod after parturition in which animal produces milk is called as...",
-      answers: [
-        { text: "Calving period", correct: false },
-        { text: "Lactation period", correct: true },
-        { text: "Dry period", correct: false },
-        { text: "Conception", correct: false },
-      ],
-    },
-    {
-      question:
-        "In which of the following kinds of organism is the phenomenon found wherein the female kills the male after copulation?",
-      answers: [
-        { text: "Dragonfly", correct: true },
-        { text: "Honeybee", correct: false },
-        { text: "Spider", correct: false },
-        { text: "Pit viper", correct: false },
-      ],
-    },
-    {
-      question: "The fundamental ecomoic problem faced by all societies is",
-      answers: [
-        { text: "unemployment", correct: true },
-        { text: "poverty", correct: false },
-        { text: "inequality", correct: false },
-        { text: "scarcity", correct: false },
-      ],
-    },
-  ];
-  
-  const questionElement = document.getElementById("question");
-  const answerButtons = document.getElementById("answer-buttons");
-  const nextButton = document.getElementById("next-btn");
-  
-  const startButton = document.getElementById("btn-start")
-  const starter = document.querySelector('.starter')
-  const app = document.querySelector(".app")
+const quizData = [
+  {
+    question: "What are the three states of matter?",
+    a: "Solids, Plasma and Foam",
+    b: "Stone, Water and Air",
+    c: "Solids, Liquids and Gas",
+    d: "Stone, Liquids and Foam",
+    correct: "c",
+  },
+  {
+    question: "Charles Darwin discovered the Theory of …",
+    a: "Magnetism",
+    b: "Climate change",
+    c: "Evolution",
+    d: "Continental drift",
+    correct: "c",
+  },
+  {
+    question:
+      "You can use the sentence ‘My Very Educated Mother Just Served Us Nachos’ to remember what?",
+    a: "The order of the planets",
+    b: "The parts of a plant",
+    c: "The continents on Earth",
+    d: "The organs in the human body",
+    correct: "a",
+  },
+  {
+    question: "Pollination helps a plant do what?",
+    a: "Photosynthesise ",
+    b: "Reproduce",
+    c: "Attract bees",
+    d: "Grow",
+    correct: "b",
+  },
+  {
+    question: "Which of the following animals is a primate?",
+    a: " Whale",
+    b: "Scorpion",
+    c: "Eagle",
+    d: "Gorilla",
+    correct: "d",
+  },
+  {
+    question: "When a lightbulb turns on, electrical energy is turned into …",
+    a: "Light energy and kinetic energy",
+    b: "Light energy and heat energy",
+    c: "Heat energy and kinetic energy",
+    d: " Sound energy and gravitational potential energy",
+    correct: "b",
+  },
+  {
+    question: "Approximately how many humans are there on Earth?",
+    a: "800 thousand",
+    b: "8 Million",
+    c: "8 Billion",
+    d: "18 Billion",
+    correct: "c",
+  },
+  {
+    question: "Which force keeps an aeroplane from falling out of the air?",
+    a: "Lift",
+    b: "Flight",
+    c: "Gravity",
+    d: "Drag",
+    correct: "a",
+  },
+  {
+    question:
+      "If you put a glass over a lit candle, what would happen to the flame?",
+    a: "It would get brighter",
+    b: "It would go out",
+    c: "It would set the glass on fire",
+    d: "Nothing would happen",
+    correct: "b",
+  },
+  {
+    question: "Which of these mammals is a marsupial?",
+    a: "Human",
+    b: "Dolphin",
+    c: "Hedgehog",
+    d: "Kangaroo",
+    correct: "d",
+  },
+];
 
-  let currentQuestionIndex = 0;
-  let score = 0;
-  
-  function startQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    nextButton.innerHTML = "Next"
-    starter.style.display="none"
-    app.style.display="block"
-    showQuestion();
+const quiz = document.getElementById("quiz");
+const resultEle = document.getElementById("result");
+const answerEls = document.querySelectorAll(".answer");
+const labelEls = document.querySelectorAll(".op_label");
+const questionEle = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+const submitBtn = document.getElementById("submit");
+const scoreEle = document.getElementById("score");
+const reloadBtn = document.getElementById("reload");
+
+let currentQuestion = 0;
+let answered = 0;
+
+let submitted = false;
+
+let userSelected = {};
+
+loadQuiz();
+function loadQuiz() {
+  questionEle.innerText = quizData[currentQuestion].question;
+  a_text.innerText = quizData[currentQuestion].a;
+  b_text.innerText = quizData[currentQuestion].b;
+  c_text.innerText = quizData[currentQuestion].c;
+  d_text.innerText = quizData[currentQuestion].d;
+  deSelectAnswer();
+  if (userSelected[currentQuestion]) {
+    let selected = userSelected[currentQuestion];
+    document.getElementById(selected).checked = true;
   }
-  
-  function showQuestion(){
-      resetState();
-      let currentQuestion = questions[currentQuestionIndex]
-      let questionNo = currentQuestionIndex + 1;
-      questionElement.innerHTML = questionNo + ". " + currentQuestion.question
-  
-      currentQuestion.answers.forEach(answer =>{
-          const button = document.createElement("button")
-          button.innerHTML = answer.text;
-          button.classList.add("btn")
-          answerButtons.appendChild(button)
-          if(answer.correct){
-              button.dataset.correct = answer.correct;
-          }
-          button.addEventListener("click", selectAnswer)
-      })
-  
+
+  if (currentQuestion == quizData.length - 1) {
+    nextBtn.style.display = "none";
+    if(submitted){
+      submitBtn.style.display = "none";
+      reloadBtn.style.display="block"
+    }else{
+      submitBtn.style.display = "block";
+      reloadBtn.style.display="none"
+    }
   }
-  
-  function resetState(){
-      nextButton.style.display="none";
-      while(answerButtons.firstChild){
-          answerButtons.removeChild(answerButtons.firstChild)
+
+  if (submitted) {
+    let actualAns = quizData[currentQuestion].correct;
+    let userSelect= userSelected[currentQuestion];
+    labelEls.forEach((labelEle) => {
+      labelEle.classList.remove("correct");
+      labelEle.classList.remove("wrong");
+    });
+    console.log(actualAns);
+    console.log(userSelected);
+    if (actualAns == userSelect) {
+      let op = actualAns + "_text";
+      document.getElementById(op).classList.add("correct");
+    } else {
+      let correct_op = actualAns + "_text";
+      document.getElementById(correct_op).classList.add("correct");
+      let user_op = userSelect + "_text";
+      document.getElementById(user_op).classList.add("wrong");
+
+      
+    }
+  }
+
+}
+function deSelectAnswer() {
+  answerEls.forEach((answerEle) => {
+    answerEle.checked = false;
+  });
+}
+
+nextBtn.addEventListener("click", () => {
+  let answer = getSelected();
+  if (!submitted) {
+    if (answer) {
+      if (answer == quizData[currentQuestion].correct) {
+        answered++;
       }
-  }
-  
-  function selectAnswer(e){
-      const selectedBtn = e.target;
-      const isCorrect = selectedBtn.dataset.correct === 'true';
-      if(isCorrect){
-          selectedBtn.classList.add('correct')
-          score++;
-      }else{
-          selectedBtn.classList.add('incorrect')
+
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuiz();
       }
-      Array.from(answerButtons.children).forEach(button =>{
-          if(button.dataset.correct === 'true'){
-              button.classList.add("correct")
-          }
-          button.disabled = true
-      })
-      nextButton.style.display ='block'
+    }
+  }else{
+    currentQuestion++
+    loadQuiz()
   }
-  
-  function showScore(){
-      resetState();
-      questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`
-      nextButton.innerHTML = "Play Again"
-      nextButton.style.display = "block"
+});
+
+prevBtn.addEventListener("click", () => {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    loadQuiz();
   }
-  
-  function handleNextButton(){
-      currentQuestionIndex++;
-      if(currentQuestionIndex < questions.length){
-          showQuestion();
-      }else{
-          showScore();
+});
+
+submitBtn.addEventListener("click", () => {
+  let answer = getSelected();
+  if (!submitted) {
+    if (answer) {
+      if (answer == quizData[currentQuestion].correct) {
+        console.log(answer);
+        answered++;
+        console.log(answered);
       }
-  }
-  
-  nextButton.addEventListener("click", ()=>{
-      if(currentQuestionIndex < questions.length){
-          handleNextButton();
-      }else{
-          startQuiz();
+
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuiz();
       }
-  })
+    }
+  }
 
 
+  quiz.style.display = "none";
+  resultEle.style.display = "block";
+  if (getSelected()) {
+    submitted = true;
+    scoreEle.innerText =
+      answered + "/" + quizData.length + " Questions answered correctly";
+  }
+});
 
-  startButton.addEventListener('click', startQuiz)
-  
+function getSelected() {
+  let answer
+  answerEls.forEach((answerEle) => {
+    if (answerEle.checked) {
+      answer = answerEle.id;
+      userSelected[currentQuestion] = answer;
+      
+    }
+  });
+  return answer;
+}
+ 
+
+function loadAnswers() {
+  currentQuestion = 0;
+  quiz.style.display = "block";
+  resultEle.style.display = "none";
+  answerEls.forEach((answerEle) => {
+    answerEle.disabled = true;
+  });
+  submitBtn.style.display = "none";
+  nextBtn.style.display = "block";
+  loadQuiz();
+}

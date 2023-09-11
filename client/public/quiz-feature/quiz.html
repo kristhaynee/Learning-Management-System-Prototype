@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="quiz.css">
-    <script defer src="quiz.js"></script>
-</head>
-<body>
-    <div class="starter">
-        <h1>Instructions</h1>
-        <div class="instructions">
-            <ol>
-                <li>You will be asked 10 questions one after another</li>
-                <li>1 point is awarded for the correct answers</li>
-                <li>Each question has four options. You can choose only one option</li>
-                <li>The result will be declared at the end of the quiz</li>
-            </ol>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="quiz.css" />
+    
+  </head>
+  <body>
+    <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+        <h2 id="question">first question</h2>
+        <ul>
+          <li>
+            <input type="radio" name="answer" id="a" class="answer" />
+            <label for="a" class="op_label" id="a_text">Option1</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="b" class="answer" />
+            <label for="b" class="op_label" id="b_text">Option2</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="c" class="answer" />
+            <label for="c" class="op_label" id="c_text">Option3</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="d" class="answer" />
+            <label for="d" class="op_label" id="d_text">Option4</label>
+          </li>
+        </ul>
+        <div class="actions">
+          <button id="prev">Previous</button>
+          <button id="next">Next</button>
+          <button id="submit">Submit</button>
+          <button id="reload" onclick="location.reload()">Reload</button>
         </div>
-        <button class="btn-start" id="btn-start">Start quiz</button>
+      </div>
     </div>
 
-    <div class="app">
-        <h1 id="numQuestions">Simple Quiz</h1>
-        <div class="quiz">
-            <h2 id="question">
-            Question goes here
-            </h2>
-            <div id="answer-buttons">
-                <button class="btn">Answer1</button>
-                <button class="btn">Answer2</button>
-                <button class="btn">Answer3</button>
-                <button class="btn">Answer4</button>
-            </div>
-            <div class="separate-btn">
-                <button id="next-btn">Next</button>
-            </div>
-        </div>
+    <div class="result-container" id="result">
+      <h2 id="score"></h2>
+      <div class="actions">
+        <button  onclick="location.reload()">Reload</button>
+        <button id="showAns" onclick="loadAnswers()">Show Answer</button>
+      </div>
+
+      <div class="show-result">
+        
+      </div>
     </div>
-</body>
+    <script src="quiz.js"></script>
+  </body>
 </html>
