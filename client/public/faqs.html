@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="../assets/css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/scroll.css">
+    <script defer src="../assets/js/scroll.js"></script>
   </head>
 
 <!-- Header -->
   <body>
-    <header>
+    <header class="scroll-hidden">
       <div class="faqs-header">
         <nav class="navbar navbar-expand-sm">
           <div class="container">
@@ -84,7 +86,7 @@
     <div class="m-5">
         <div class="row">
             <!-- Left side with category list -->
-            <div class="col-3 fixed-column">
+            <div class="col-3 fixed-column trans-delay-1 scroll-slide-hidden">
                 <div class="card-faqs">
                     <div class="card-body">
                         <div class="category-list m-3 lh-7">
@@ -96,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 scrollable-column">
+            <div class="col-md-8 scrollable-column trans-delay-2 scroll-slide-hidden">
                 <div id="category1" class="category-content">
                     <!-- Accordion content for Category 1 -->
                     <div class="accordion accordion-flush" id="overviewCategory">
