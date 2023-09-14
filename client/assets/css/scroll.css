@@ -1,0 +1,32 @@
+.scroll-hidden{
+    opacity: 0;
+    filter:blur(5px);
+    transition: all 1s;
+}
+
+
+.scroll-show{
+ opacity: 1;
+ filter:blur(0);
+}
+
+
+.scroll-slide-hidden{
+    opacity: 0;
+    filter:blur(5px);
+    transform:  translateX(-100%);
+    transition: all 1s;
+}
+
+.scroll-slide-show{
+    opacity: 1;
+    filter:blur(0);
+    transform: translateX(0);
+}
+
+@media(prefers-reduced-motion){
+    .scroll-hidden, .scroll-slide-hidden{
+        transition:none;
+    }
+}
+
