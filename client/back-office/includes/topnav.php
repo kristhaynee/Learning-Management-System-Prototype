@@ -37,7 +37,7 @@
                     <div class="col text-center">
                         <div class="d-flex flex-column align-items-center">
                         <i class="fa-regular fa-lightbulb"></i>
-                        <a class="nav-link px-3" href="AboutUs.php">Assessments</a>
+                        <a class="nav-link px-3" href="assessment.php">Assessments</a>
                         </div>
                     </div>
                 </li>
