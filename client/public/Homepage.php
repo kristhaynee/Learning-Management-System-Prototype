@@ -19,7 +19,9 @@
   </head>
 
   <body>
-    <header class="scroll-hidden">
+    <div id="preloader"></div>
+
+    <header class="trans-delay-3 scroll-hidden">
       <div class="homepage-header">
         <nav class="navbar navbar-expand-sm">
           <div class="container">
@@ -82,7 +84,7 @@
     </div>
     </header>
 
-    <section class="pt-5 pb-5 first-sec-home scroll-slide-hidden">
+    <section class="pt-5 pb-5 first-sec-home trans-delay-3 scroll-slide-hidden">
         <div class="display-5 fw-bold lh-1 mb-3 pt-4">
             <h1 class="text-center home-about">
                 What is PISA?
@@ -99,7 +101,7 @@
     </section>
 
     <section class="container my-5 ">
-    <div class="row g-lg-3 py-4"> <!-- Reduced the gutter between columns using g-lg-3 -->
+    <div class="row g-lg-3 py-4 trans-delay-3 scroll-hidden"> <!-- Reduced the gutter between columns using g-lg-3 -->
         <div class="col-sm-3 text-center">
             <h3 class="display-4 fw-bold lh-1 mt-3 mb-3 home-sect-two"> 
                 PISA Test Assessment
