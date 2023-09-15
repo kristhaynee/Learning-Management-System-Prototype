@@ -22,7 +22,7 @@ include('includes/script.php');
     <div class="container mt-3 table-responsive tab-pane fade show active" role="tabpanel" aria-labelledby="nav-student-tab" id="nav-student">
         <div class="card">
             <div class="card-body">
-            <table id="example" class="table table-striped" style="width:100%">
+            <table id="example1" class="table pt-3 px-5" style="width:100%">
                 <thead>
                     <tr>
                         <th>Student ID</th>
@@ -123,16 +123,6 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </tfoot>
             </table>
             </div>
         </div>
@@ -142,7 +132,7 @@ include('includes/script.php');
     <div class="container mt-3 table-responsive tab-pane fade" role="tabpanel" aria-labelledby="nav-teacher-tab" id="nav-teacher">
         <div class="card">
             <div class="card-body">
-            <table id="example" class="table table-striped" style="width:100%">
+            <table id="example2" class="table pt-3 px-5" style="width:100%">
                 <thead>
                     <tr>
                         <th>Teacher ID</th>
@@ -155,7 +145,7 @@ include('includes/script.php');
                 </thead>
                 <tbody>
                     <tr>
-                        <td>stud123</td>
+                        <td>teach001</td>
                         <td>Tiger Nixon</td>
                         <td>john_fernando@gmail.com</td>
                         <td>j_anthony</td>
@@ -163,7 +153,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud124</td>
+                        <td>teach002</td>
                         <td>Krizzia Marie Cruz</td>
                         <td>k_marie@gmail.com</td>
                         <td>k_marie</td>
@@ -171,7 +161,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud125</td>
+                        <td>teach003</td>
                         <td>Alfredo Marquez</td>
                         <td>alfredo_marq@gmail.com</td>
                         <td>alfmarq</td>
@@ -179,7 +169,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud126</td>
+                        <td>teach004</td>
                         <td>Andrea Cordoje</td>
                         <td>andy_C@gmail.com</td>
                         <td>andyy</td>
@@ -187,7 +177,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud127</td>
+                        <td>teach005</td>
                         <td>Martin Loui Cruz</td>
                         <td>martinL_cruz@gmail.com</td>
                         <td>martinL</td>
@@ -195,7 +185,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud128</td>
+                        <td>teach006</td>
                         <td>Missy Angela Carlos</td>
                         <td>missyAC@gmail.com</td>
                         <td>missyAC</td>
@@ -203,7 +193,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud129</td>
+                        <td>teach007</td>
                         <td>Herrod Chandler</td>
                         <td>herrod_c@gmail.com</td>
                         <td>herrodC</td>
@@ -211,7 +201,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud130</td>
+                        <td>teach008</td>
                         <td>Rhona Davidson</td>
                         <td>rhona_davidson@gmail.com</td>
                         <td>rhona</td>
@@ -219,7 +209,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud131</td>
+                        <td>teach009</td>
                         <td>Colleen Hurst</td>
                         <td>ColleenHurst@gmail.com</td>
                         <td>Colleen</td>
@@ -227,7 +217,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud132</td>
+                        <td>teach010</td>
                         <td>Hermione Butler</td>
                         <td>Butler_Hermione@gmail.com</td>
                         <td>Hermioneee</td>
@@ -235,7 +225,7 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                     <tr>
-                        <td>stud133</td>
+                        <td>teach011</td>
                         <td>Lael Greer</td>
                         <td>LaelGreer@gmail.com</td>
                         <td>LaelG</td>
@@ -243,16 +233,6 @@ include('includes/script.php');
                         <td></td>
                     </tr>
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </tfoot>
             </table>
             </div>
         </div>

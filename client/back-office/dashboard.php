@@ -91,7 +91,7 @@ include('includes/script.php');
                         </div>
                         <div class="col-auto">
                             <div class="view-all">
-                                <button class="view-all-button">See all</button>
+                                <a href="users.php" class="view-all-button">See all</a>
                             </div>
                         </div>
                     </div>
