@@ -255,6 +255,7 @@ body {
     padding: 5px 20px;
     cursor: pointer;
     border-radius: 5px;
+    text-decoration: none;
 }
 
 .view-all-button:hover {
@@ -276,4 +277,22 @@ body {
 }
 .custom-tabs {
     color: #888B8F !important;
+}
+
+.new-user{
+    margin-right: 4rem;
+}
+
+.new-user-form {
+    background-color: #f9900e;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.new-user-form:hover {
+    background-color: #23bdb8;
 }
