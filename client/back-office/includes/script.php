@@ -31,7 +31,41 @@
 
             // Show the selected tab content
             $($(this).attr('href')).show();
+
+            
         });
     });
 </script>
+
+    <!-- User Table -->
+
+
+    <!-- Add User Popup -->
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get references to the pop-up and the button
+        const popup = document.getElementById('popup');
+        const showPopupButton = document.getElementById('show-popup');
+        const closePopupButton = document.getElementById('close-popup');
+
+        // Function to show the pop-up
+        function showPopup() {
+            popup.classList.add('show'); // Add the 'show' class
+        }
+
+        // Function to close the pop-up
+        function closePopup() {
+            popup.classList.remove('show'); // Remove the 'show' class
+        }
+
+        // Event listeners
+        showPopupButton.addEventListener('click', showPopup);
+        closePopupButton.addEventListener('click', closePopup);
+
+    });
+    </script>
+
+    <!-- Add User Popup -->
+
     
