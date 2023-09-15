@@ -221,7 +221,7 @@ body {
     }
 
     /* Hover effect */
-    .edit-button:hover {
+    .edit-button:hover{
         background-color: #0056b3;
     }
 /* --- Profile Card ---*/
@@ -280,7 +280,7 @@ body {
 }
 
 .new-user{
-    margin-right: 4rem;
+    margin-right: 7rem;
 }
 
 .new-user-form {
@@ -296,3 +296,84 @@ body {
 .new-user-form:hover {
     background-color: #23bdb8;
 }
+
+.user-table-btns{
+    margin-left: 6.5rem;
+}
+
+.add-teach-btn{
+    background-color: #f9900e;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.add-teach-btn:hover{
+    background-color: #a86008;
+}
+
+
+.print-btn{
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 5px 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.print-btn:hover{
+    background-color: #004187;
+}
+
+/* --pop up-- */
+
+/* CSS for the pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    /* Remove display: flex; */
+}
+
+.popup.show {
+    display: flex; /* Add this class to show the popup */
+    justify-content: center;
+    align-items: center;
+}
+
+
+.popup-content {
+    background-color: #fff;
+    margin: 10rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.close-popup-btn {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.save-teach-btn {
+    background-color: #24B1D6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    }
+.save-teach-btn:hover {
+        background-color: #249dbb;
+}
+
+/* --popup-- */
