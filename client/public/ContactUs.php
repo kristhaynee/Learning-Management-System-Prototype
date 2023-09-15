@@ -126,7 +126,7 @@
         <div class="row">
           <div class="col-sm-6 col-md-6 mb-3">
             <form>
-              <img class="logo-footer" src="../images/Logo.png" alt="PISA">
+              <img class="logo-footer" src="../assets/images/Logo.png" alt="PISA">
               <p class="py-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
               </p>
             </form>
@@ -160,12 +160,12 @@
       
   <div class="row">
     <div class="col">
-      <img class="mx-2 my-2" src="../images/facebook.svg" alt="facebook">
-      <img class="mx-2 my-2" src="../images/twitter.svg" alt="twitter">
-      <img class="mx-2 my-2" src="../images/instagram.svg" alt="instagram">
-      <img class="mx-2 my-2" src="../images/youtube.svg" alt="youtube">
-      <img class="mx-2 my-2" src="../images/linkedin.svg" alt="linkedin">
-      <img class="mx-2 my-2" src="../images/share-fill.svg" alt="share">
+      <img class="mx-2 my-2" src="../assets/images/facebook.svg" alt="facebook">
+      <img class="mx-2 my-2" src="../assets/images/twitter.svg" alt="twitter">
+      <img class="mx-2 my-2" src="../assets/images/instagram.svg" alt="instagram">
+      <img class="mx-2 my-2" src="../assets/images/youtube.svg" alt="youtube">
+      <img class="mx-2 my-2" src="../assets/images/linkedin.svg" alt="linkedin">
+      <img class="mx-2 my-2" src="../assets/images/share-fill.svg" alt="share">
     </div>
     <div class="col text-end">
       Copyright &copy; 2023 PISA
