@@ -7,6 +7,8 @@
 
     <script defer src="../assets/js/navbar-sticky.js"></script>
     <script defer src="../assets/js/user-table.js"></script>    
+    <script defer src="../assets/js/create-assessment.js"></script>    
+    <script defer src="../assets/js/add-question.js"></script>    
 
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -67,5 +69,59 @@
     </script>
 
     <!-- Add User Popup -->
+
+    <!-- Add Subject Popup -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get references to the pop-up and the button
+        const popup = document.getElementById('subject-popup');
+        const showPopupButton = document.getElementById('subject-show-popup');
+        const closePopupButton = document.getElementById('subject-close-popup');
+
+        // Function to show the pop-up
+        function showPopup() {
+            popup.classList.add('show'); // Add the 'show' class
+        }
+
+        // Function to close the pop-up
+        function closePopup() {
+            popup.classList.remove('show'); // Remove the 'show' class
+        }
+
+        // Event listeners
+        showPopupButton.addEventListener('click', showPopup);
+        closePopupButton.addEventListener('click', closePopup);
+
+    });
+    </script>
+    <!-- Add Suject Popup -->
+    
+    <!-- Create Assessment Popup -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get references to the pop-up and the button
+        const popup = document.getElementById('assessment-popup');
+        const showPopupButton = document.getElementById('assessment-show-popup');
+        const closePopupButton = document.getElementById('assessment-close-popup');
+
+        // Function to show the pop-up
+        function showPopup() {
+            popup.classList.add('show'); // Add the 'show' class
+        }
+
+        // Function to close the pop-up
+        function closePopup() {
+            popup.classList.remove('show'); // Remove the 'show' class
+        }
+
+        // Event listeners
+        showPopupButton.addEventListener('click', showPopup);
+        closePopupButton.addEventListener('click', closePopup);
+
+    });
+    </script>
+    <!-- Create Assessment Popup -->
+
+    <!---------------------------------------- QUIZ MAKER PART ---------------------------------------->
 
     
