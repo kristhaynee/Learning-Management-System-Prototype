@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,14 +79,18 @@
           </div>
 
           <div class="col-md-10 mx-auto col-lg-5">
-            <form class="shadow-lg p-4 p-md-4 border rounded-4 bg-body-tertiary">
+            
+            <form action="backend/logincode.php" method="post" class="shadow-lg p-4 p-md-4 border rounded-4 bg-body-tertiary">
               <h1 class="text-center text-secondary-color paddingTB">Login</h1>
+              <?php include('message.php')?>
               <div class="form-floating mb-3">
                 <input
                   type="email"
                   class="form-control"
                   id="floatingInput"
                   placeholder="name@example.com"
+                  required
+                  name="email"
                 />
                 <label for="floatingInput">Enter your email address</label>
               </div>
@@ -92,15 +100,15 @@
                   class="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  required
+                  name="password"
                 />
                 <label for="floatingPassword">Password</label>
               </div>
-              <button
-              class="d-grid gap-2 col-6 mx-auto btn text-white font-weight marginTB btn-secondary-color p-3 mt-5 mb-4"
-              type="submit"
-              >
+              <button class="d-grid gap-2 col-6 mx-auto btn text-white font-weight marginTB btn-secondary-color p-3 mt-5 mb-4"
+              type="submit" name="login_btn" value="login">
               Log in
-            </button>
+              </button>
             <div class="text-center">
               <p>Don't you have an account? <a class="sign-up_link" href="Signup.php">Sign up</a></p>
             </div>
