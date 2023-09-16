@@ -1,4 +1,6 @@
 <?php
+include('security/authentication.php');
+
 include('includes/header.php');
 include('includes/topnav.php');
 include('includes/script.php');
@@ -7,8 +9,9 @@ include('includes/script.php');
 <!-- Welcome Message -->
 <section class="content"> 
     <div class="container mt-1 mb-5">
+    <?php include('elements/message.php')?>
         <div class="ml-5">
-            <p class="welcome-msg">Hi, Welcome back!</p>
+            <p class="welcome-msg">Hi! Welcome back <?= $_SESSION['auth_user']['fname']; ?></p>
         </div>
     </div>
 <!-- Welcome Message -->
