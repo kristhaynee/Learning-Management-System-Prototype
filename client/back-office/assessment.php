@@ -2,43 +2,44 @@
 include('includes/header.php');
 include('includes/topnav.php');
 include('includes/script.php');
+include('elements/popup/add-subject.php');
+include('elements/popup/create-assessment.php');
 ?>
 
 
 <section class="content">
 
     <div class="container mt-1 mb-1">
-        <div class="row ">
-
-            <div class="ml-5 col-8">
-                <p class="page-name fw-bold">Manage Assessment</p>
-                <p class=" fs-5"><span class="border-bottom  border-warning">Avail</span>able Assessment</p>
-            </div>
-
-            <div class="col-4 mt-5">
-                <div class="row ">
-                    <div class="col ">
-
-                        <button class=" px-5 text-light  btn btn-info">
-                            Add Subject
-                        </button>
-                    </div>
-                    <div class="col">
-
-                        <button class=" px-5 text-light  btn btn-warning">
-                            Add New Test
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div class="ml-5">
+            <p class="page-name">Manage Assessments</p>
         </div>
     </div>
 
-    <!-- TABLE STUDENT -->
+    <div class="container mt-1 mb-1">
+        <div class="row">
+            <div class="ml-5 col-8">
+                <nav class="nav container">
+                    <div class="nav custom-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item custom-tabs nav-link active" id="nav-student-tab" data-toggle="tab" href="#nav-student" role="tab" aria-controls="nav-student" aria-selected="true">Available Assessments</a>
+                    </div>
+                </nav>
+            </div>
+        </div> <!--row-->
+    </div> <!--container-->
+
+    <!-- TABLE ASSESSMENTS -->
     <div class="container mt-3 table-responsive tab-pane fade show active" role="tabpanel" aria-labelledby="nav-student-tab" id="nav-student">
         <div class="card">
-            <div class="card-body m-5 pt-4 px-3">
-                <table id="example1" class="table pt-3 px-5" style="width:100%">
+
+        <div class="card-header">
+            <div class="d-flex flex-row-reverse bd-highlight">
+                <button class="text-light add-teach-btn" id="assessment-show-popup">Create Assessment</button>
+                <button class="text-light print-btn mx-2" id="subject-show-popup">Add Subject</button>
+            </div>
+        </div>
+
+            <div class="card-body mx-5 px-3">
+                <table id="example1" class="table px-5" style="width:100%">
                     <thead>
                         <tr>
                             <th>Assesssment No.</th>
