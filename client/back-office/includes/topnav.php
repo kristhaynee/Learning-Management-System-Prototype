@@ -42,20 +42,20 @@
                     </div>
                 </li>
 
-                <li class="nav-item mx-5">
+                <!-- <li class="nav-item mx-5">
                     <div class="col text-center">
                         <div class="d-flex flex-column align-items-center">
                         <i class="fa-solid fa-book-open"></i>
                         <a class="nav-link px-3" href="AboutUs.php">Subject</a>
                         </div>
                     </div>
-                </li>
+                </li> -->
 
                 <li class="nav-item mx-5">
                     <div class="col text-center">
                         <div class="d-flex flex-column align-items-center">
                         <i class="fa-solid fa-file-invoice"></i>
-                        <a class="nav-link px-3" href="AboutUs.php">Reports</a>
+                        <a class="nav-link px-3" href="report.php">Reports</a>
                         </div>
                     </div>
                 </li>
