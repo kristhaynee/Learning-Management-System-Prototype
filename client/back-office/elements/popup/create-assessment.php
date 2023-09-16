@@ -179,9 +179,6 @@
                         <button class="next_button">Next Step</button>
                     </div>
                 </div>
-                
-                
-                
                 </div>
             </div>
         </div>
