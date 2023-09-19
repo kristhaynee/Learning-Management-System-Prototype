@@ -85,6 +85,7 @@
     navIconEls.forEach(navIcon => {
        if(navIcon.lastChild.previousElementSibling.href.includes(windowPathname)){
         navIcon.style.color="#FF9635"
+        navIcon.style.borderBottom = "3px solid #FF9635"
        }
     });
     
