@@ -1,4 +1,11 @@
 <body>
+<style>
+    .nav-icon:hover, .nav-link:hover{
+        color:#FF9635;
+    }
+
+
+</style>
     <header>
     <!-- LOGO SECTION -->
     <div class="logo-section pt-3 pb-3 border-bottom border-2">
@@ -17,7 +24,7 @@
 
                 <li class="nav-item mx-5">
                     <div class="col text-center">
-                        <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex flex-column align-items-center nav-icon">
                         <i class="fa-solid fa-table-columns"></i>
                         <a class="nav-link active px-3" aria-current="page" href="dashboard.php">Dashboard</a>
                         </div>
@@ -26,7 +33,7 @@
 
                 <li class="nav-item mx-5">
                     <div class="col text-center">
-                        <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex flex-column align-items-center nav-icon">
                         <i class="fa-solid fa-user"></i>
                         <a class="nav-link px-3" href="users.php">Users</a>
                         </div>
@@ -35,7 +42,7 @@
 
                 <li class="nav-item mx-5">
                     <div class="col text-center">
-                        <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex flex-column align-items-center nav-icon">
                         <i class="fa-regular fa-lightbulb"></i>
                         <a class="nav-link px-3" href="assessment.php">Assessments</a>
                         </div>
@@ -44,7 +51,7 @@
 
                 <!-- <li class="nav-item mx-5">
                     <div class="col text-center">
-                        <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex flex-column align-items-center nav-icon">
                         <i class="fa-solid fa-book-open"></i>
                         <a class="nav-link px-3" href="AboutUs.php">Subject</a>
                         </div>
@@ -53,7 +60,7 @@
 
                 <li class="nav-item mx-5">
                     <div class="col text-center">
-                        <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex flex-column align-items-center nav-icon">
                         <i class="fa-solid fa-file-invoice"></i>
                         <a class="nav-link px-3" href="report.php">Reports</a>
                         </div>
@@ -64,4 +71,22 @@
           </div>
         </nav>
     </div>
+    <script>
+    const navLinksEls = document.querySelectorAll('.nav-link')
+    const windowPathname = window.location.pathname
+
+    const navIconEls = document.querySelectorAll('.nav-icon')
+   
+    navLinksEls.forEach(navlink=>{
+        if(navlink.href.includes(windowPathname))
+        navlink.style.color="#FF9635"
+    })
+
+    navIconEls.forEach(navIcon => {
+       if(navIcon.lastChild.previousElementSibling.href.includes(windowPathname)){
+        navIcon.style.color="#FF9635"
+       }
+    });
+    
+    </script>
     </header>
