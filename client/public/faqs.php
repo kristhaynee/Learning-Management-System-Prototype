@@ -25,7 +25,7 @@
       <div class="faqs-header">
         <nav class="navbar navbar-expand-sm">
           <div class="container">
-            <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../images/Logo.png" alt=""></a>
+          <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../assets/images/Logo.png" alt=""></a>
 
             <button
               class="navbar-toggler"
