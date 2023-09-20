@@ -101,9 +101,14 @@ include('includes/script.php');
 
                     
                     <div class="card-body custom-card-body tab-content" id="nav-tabContent">
-
                     <!-- Student Table -->
                         <div class="table-responsive fade show active" role="tabpanel" aria-labelledby="nav-student-tab" id="nav-student">
+                            <?php
+                                $query = "SELECT * FROM users WHERE role_as='2' ORDER BY created_at DESC LIMIT 3";
+                                $query_run = mysqli_query($con, $query);
+
+                                if (mysqli_num_rows($query_run) > 0) {
+                            ?>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -111,37 +116,42 @@ include('includes/script.php');
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Username</th>
-                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                        foreach ($query_run as $row) {
+                                    ?>
                                     <tr>
-                                        <td>stud123</td>
-                                        <td>John Anthony Fernando</td>
-                                        <td>john_fernando@example.com</td>
-                                        <td>j_anthony</td>
-                                        <td class="status-active">active</td>
+                                        <td><?= $row['userCode']; ?></td>
+                                        <td><?= $row['fname'] . " " . $row['lname'] . " " . $row['suffix']; ?></td>
+                                        <td><?= $row['email']; ?></td>
+                                        <td><?= $row['username']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>stud124</td>
-                                        <td>Krizzia Marie Cruz</td>
-                                        <td>k_marie@example.com</td>
-                                        <td>k_marie</td>
-                                        <td class="status-active">active</td>
-                                    </tr>
-                                    <tr>
-                                        <td>stud125</td>
-                                        <td>Alfredo Marquez</td>
-                                        <td>alfredo_m@example.com</td>
-                                        <td>alfmarq</td>
-                                        <td class="status-inactive">inactive</td>
-                                    </tr>
+                                    <?php
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
+                            <?php
+                            } else {
+                            ?>
+                                <div class="text-center">
+                                    No Record Found
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
 
                         <!-- Teacher table -->
                         <div class="table-responsive tab-pane fade" id="nav-teacher" role="tabpanel" aria-labelledby="nav-student-tab">
+                            <?php
+                            $query = "SELECT * FROM users WHERE role_as='1' ORDER BY created_at DESC LIMIT 3";
+                            $query_run = mysqli_query($con, $query);
+
+                                if (mysqli_num_rows($query_run) > 0) {
+                            ?>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -149,34 +159,33 @@ include('includes/script.php');
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Username</th>
-                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                        foreach ($query_run as $row) {
+                                    ?>
                                     <!-- Teacher data rows -->
                                     <tr>
-                                        <td>teach001</td>
-                                        <td>Allain Dela Fuente</td>
-                                        <td>allain_D@example.com</td>
-                                        <td>allain_D</td>
-                                        <td class="status-active">active</td>
+                                        <td><?= $row['userCode']; ?></td>
+                                        <td><?= $row['fname'] . " " . $row['lname'] . " " . $row['suffix']; ?></td>
+                                        <td><?= $row['email']; ?></td>
+                                        <td><?= $row['username']; ?></td>
                                     </tr>
-                                    <tr>
-                                        <td>teach002</td>
-                                        <td>Anna May Reyes</td>
-                                        <td>anna_mae@example.com</td>
-                                        <td>anna_m</td>
-                                        <td class="status-active">active</td>
-                                    </tr>
-                                    <tr>
-                                        <td>teach003</td>
-                                        <td>Raymark Santos</td>
-                                        <td>santos_ray@example.com</td>
-                                        <td>ray_Santos</td>
-                                        <td class="status-active">active</td>
-                                    </tr>
+                                    <?php
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
+                            <?php
+                            } else {
+                            ?>
+                                <div class="text-center">
+                                        No Record Found
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -188,22 +197,50 @@ include('includes/script.php');
 
         <!-- Profile Card (Right Side) -->
         <div class="col-md-3">
-            <div class="card profile-card-3 ">
-                <!-- Profile Card Content -->
-                <div class="background-block">
-                    <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
-                </div>
-                <div class="profile-thumb-block">
-                    <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="profile-image" class="profile"/>
-                </div>
-                <div class="card-content">
-                    <h2>Justin Mccoy<small>Admin</small></h2>
-                    <div class="icon-block">
-                        <button class="edit-button">Edit</button>
+        <?php
+        if(isset($_SESSION['auth_user']['user_id'])) {
+            $user_id = $_SESSION['auth_user']['user_id'];
+            $users = "SELECT * FROM users WHERE user_id='$user_id'";
+            $user_run = mysqli_query($con, $users);
+
+            if(mysqli_num_rows($user_run) > 0) {
+                $user = mysqli_fetch_assoc($user_run);
+                $profile_image = $user['profile_img']; // Assuming 'profile_image' is the column name for the user's profile image in the database
+                $default_image_url = '../assets/images/profile_pic/default-profile-icon.jpg'; // Replace with the URL of your default image
+                ?>
+                <div class="card profile-card-3 ">
+                    <!-- Profile Card Content -->
+                    <div class="background-block">
+                        <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
+                    </div>
+                    <div class="profile-thumb-block">
+                        <img src="<?php echo $profile_image ? $profile_image : $default_image_url; ?>" alt="profile-image" class="profile"/>
+                    </div>
+                    <div class="card-content">
+                        <h2><?php echo $user['fname'] . ' ' . $user['lname'] . ' ' .$user['suffix']; ?>
+                            <small>
+                                <?php 
+                                    if($user['role_as'] == 0){echo "Admin";} 
+                                    if($user['role_as'] == 1){echo "Teacher";}
+                                    if($user['role_as'] == 2){echo "Student";}
+                                ?>
+                            </small>
+                        </h2>
+                        <div class="icon-block">
+                            <button class="edit-button">Edit</button>
+                            <button class="edit-button">View Profile</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <?php
+            }
+        }
+        ?>
+    </div>
+
+
+
+
     </div>
 </div>
 </section>
