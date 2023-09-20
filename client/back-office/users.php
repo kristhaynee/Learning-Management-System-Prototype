@@ -1,4 +1,6 @@
 <?php
+include('./././security/authentication.php');
+
 include('includes/header.php');
 include('includes/topnav.php');
 include('includes/script.php');
@@ -8,6 +10,7 @@ include('elements/popup/new-user-form.php');
 <section class="content">
 
     <div class="container mt-1 mb-1">
+    <?php include('elements/message.php')?>
         <div class="ml-5">
             <p class="page-name">Manage Users</p>
         </div>
@@ -29,261 +32,159 @@ include('elements/popup/new-user-form.php');
     <!-- TABLE STUDENT -->
     <div class="container mt-3 table-responsive tab-pane fade show active" role="tabpanel" aria-labelledby="nav-student-tab" id="nav-student">
         <div class="card">
-
-        <div class="card-header">
-            <div class="d-flex flex-row-reverse bd-highlight">
-                <button class="text-light print-btn mx-2">Print</button>
+            <div class="card-header">
+                <div class="d-flex flex-row-reverse bd-highlight p-3">
+                </div>
             </div>
-        </div>
 
-            <div class="card-body mx-5 px-3">
-                <table id="example1" class="table pt-3 px-5" style="width:100%">
+            <div class="card-body mx-5 mb-5 px-3">
+                <?php
+                $query = "SELECT * FROM users WHERE role_as='2'";
+                $query_run = mysqli_query($con, $query);
+
+                if (mysqli_num_rows($query_run) > 0) {
+                ?>
+                <table id="example1" class="table px-5" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Student ID</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th><center>Student ID</center></th>
+                            <th><center>Full Name</center></th>
+                            <th><center>Email</center></th>
+                            <th><center>Username</center></th>
+                            <th><center>Status</center></th>
+                            <th><center>Action</center></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>stud123</td>
-                            <td>Tiger Nixon</td>
-                            <td>john_fernando@gmail.com</td>
-                            <td>j_anthony</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud124</td>
-                            <td>Krizzia Marie Cruz</td>
-                            <td>k_marie@gmail.com</td>
-                            <td>k_marie</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud125</td>
-                            <td>Alfredo Marquez</td>
-                            <td>alfredo_marq@gmail.com</td>
-                            <td>alfmarq</td>
-                            <td>inactive</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud126</td>
-                            <td>Andrea Cordoje</td>
-                            <td>andy_C@gmail.com</td>
-                            <td>andyy</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud127</td>
-                            <td>Martin Loui Cruz</td>
-                            <td>martinL_cruz@gmail.com</td>
-                            <td>martinL</td>
-                            <td>inactive</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud128</td>
-                            <td>Missy Angela Carlos</td>
-                            <td>missyAC@gmail.com</td>
-                            <td>missyAC</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud129</td>
-                            <td>Herrod Chandler</td>
-                            <td>herrod_c@gmail.com</td>
-                            <td>herrodC</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud130</td>
-                            <td>Rhona Davidson</td>
-                            <td>rhona_davidson@gmail.com</td>
-                            <td>rhona</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud131</td>
-                            <td>Colleen Hurst</td>
-                            <td>ColleenHurst@gmail.com</td>
-                            <td>Colleen</td>
-                            <td>inactive</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud132</td>
-                            <td>Hermione Butler</td>
-                            <td>Butler_Hermione@gmail.com</td>
-                            <td>Hermioneee</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>stud133</td>
-                            <td>Lael Greer</td>
-                            <td>LaelGreer@gmail.com</td>
-                            <td>LaelG</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
+                        <?php
+                            foreach ($query_run as $row) {
+                        ?>
+                                <tr>
+                                    <td><?= $row['userCode']; ?></td>
+                                    <td><?= $row['fname'] . " " . $row['lname'] . " " . $row['suffix']; ?></td>
+                                    <td><?= $row['email']; ?></td>
+                                    <td><?= $row['username']; ?></td>
+                                    <td>
+                                        <?php
+                                        if ($row['status'] == 1) {
+                                            echo '<span style="color:GREEN;text-align:center;">Active</span>';
+                                        } elseif ($row['status'] == 2) {
+                                            echo '<span style="color:BLUE;text-align:center;">Inactive</span>';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
+                                        <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button>
+                                    </td>
+                                </tr>
+                        <?php
+                            }
+                        ?>
                     </tbody>
                 </table>
+                <?php
+                } else {
+                ?>
+                    <div class="text-center">
+                        No Record Found
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
+
+
+    <style>
+        .dataTables_wrapper .dataTables_length {
+            margin-left: 3rem !important;
+            margin-top: 2rem !important;
+        }
+        div.dataTables_wrapper 
+        div.dataTables_length select {
+            width: 5rem !important;
+        }
+
+        div.dt-buttons>.dt-button{
+            background-color: white !important;
+            margin-bottom: 2rem !important;
+        }
+
+        div.dataTables_wrapper div.dataTables_info {
+            margin-left: 3rem !important;
+        }
+    </style>
 
     <!-- TABLE TEACHER -->
     <div class="container mt-3 table-responsive tab-pane fade" role="tabpanel" aria-labelledby="nav-teacher-tab" id="nav-teacher">
-        <div class="card">
-
+    <div class="card">
         <div class="card-header">
             <div class="d-flex flex-row-reverse bd-highlight">
                 <button class="text-light add-teach-btn" id="show-popup">Add Teacher</button>
-                <button class="text-light print-btn mx-2">Print</button>
             </div>
         </div>
 
-        <div class="card-body mx-5">
-                <table id="example2" class="table table px-5" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Teacher ID</th>
-                            <th>Full Name</th><br>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>teach001</td>
-                            <td>Tiger Nixon</td>
-                            <td>john_fernando@gmail.com</td>
-                            <td>j_anthony</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach002</td>
-                            <td>Krizzia Marie Cruz</td>
-                            <td>k_marie@gmail.com</td>
-                            <td>k_marie</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach003</td>
-                            <td>Alfredo Marquez</td>
-                            <td>alfredo_marq@gmail.com</td>
-                            <td>alfmarq</td>
-                            <td>inactive</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach004</td>
-                            <td>Andrea Cordoje</td>
-                            <td>andy_C@gmail.com</td>
-                            <td>andyy</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach005</td>
-                            <td>Martin Loui Cruz</td>
-                            <td>martinL_cruz@gmail.com</td>
-                            <td>martinL</td>
-                            <td>inactive</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach006</td>
-                            <td>Missy Angela Carlos</td>
-                            <td>missyAC@gmail.com</td>
-                            <td>missyAC</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach007</td>
-                            <td>Herrod Chandler</td>
-                            <td>herrod_c@gmail.com</td>
-                            <td>herrodC</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach008</td>
-                            <td>Rhona Davidson</td>
-                            <td>rhona_davidson@gmail.com</td>
-                            <td>rhona</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach009</td>
-                            <td>Colleen Hurst</td>
-                            <td>ColleenHurst@gmail.com</td>
-                            <td>Colleen</td>
-                            <td>inactive</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach010</td>
-                            <td>Hermione Butler</td>
-                            <td>Butler_Hermione@gmail.com</td>
-                            <td>Hermioneee</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                        <tr>
-                            <td>teach011</td>
-                            <td>Lael Greer</td>
-                            <td>LaelGreer@gmail.com</td>
-                            <td>LaelG</td>
-                            <td>active</td>
-                            <td><button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                             <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="card-body mx-5 mb-5">
+            <?php
+            $query = "SELECT * FROM users WHERE role_as='1'"; // role_as 1 is to retrieve Teacher data from the database
+            $query_run = mysqli_query($con, $query);
+
+            if (mysqli_num_rows($query_run) > 0) {
+            ?>
+            <table id="example2" class="table table px-5" style="width:100%">
+                <thead>
+                    <tr>
+                        <th><center>Teacher ID</center></th>
+                        <th><center>Full Name</center></th>
+                        <th><center>Email</center></th>
+                        <th><center>Username</center></th>
+                        <th><center>Status</center></th>
+                        <th><center>Action</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($query_run as $row) {
+                    ?>
+                    <tr>
+                        <td><?= $row['userCode']; ?></td>
+                        <td><?= $row['fname'] . " " . $row['lname'] . " " . $row['suffix']; ?></td>
+                        <td><?= $row['email']; ?></td>
+                        <td><?= $row['username']; ?></td>
+                        <td>
+                            <?php
+                            if ($row['status'] == 1) {
+                                echo '<span style="color:GREEN;text-align:center;">Active</span>';
+                            }
+                            if ($row['status'] == 2) {
+                                echo '<span style="color:BLUE;text-align:center;">Inactive</span>';
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
+                            <button class="btn"><img src="../assets/images/archive.svg" alt="archive"></button>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <?php
+            } else {
+            ?>
+                <div class="text-center">
+                        No Record Found
+                </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
-
-
+</div>
     <!-- TABLE -->
 </section>
 
