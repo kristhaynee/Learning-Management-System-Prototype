@@ -18,6 +18,8 @@ if(isset($_POST['login_btn']))
             $email = $data['email'];
             $role_as = $data['role_as'];
             $fname = $data['fname'];
+            $userCode = $data['userCode'];
+            $suffix = $data['suffix'];
             $username = $data['username'];
     }
 
@@ -28,11 +30,27 @@ if(isset($_POST['login_btn']))
             'user_id' => $user_id,
             'email' => $email,
             'fname' => $fname,
+            'lname' => $lname,
+            'suffix' => $suffix,
+            'userCode' => $userCode
         ];
+        print_r($_SESSION['auth_user']);
 
         if($_SESSION['auth_role'] == '0') // Head Admin
         {
             $_SESSION['message'] = "Welcome to Admin dashboard"." ".$fname;
+            header("Location: ../../back-office/dashboard.php?user_id=" . $_SESSION['auth_user']['user_id']);
+            exit(0);
+        }
+        elseif($_SESSION['auth_role'] == '1') // Teacher
+        {
+            $_SESSION['message'] = "Welcome to the dashboard"." ".$fname;
+            header("Location: ../../back-office/dashboard.php?user_id=" . $_SESSION['auth_user']['user_id']);
+            exit(0);
+        }
+        elseif($_SESSION['auth_role'] == '2') // Student
+        {
+            $_SESSION['message'] = "Welcome to the dashboard"." ".$fname;
             header("Location: ../../back-office/dashboard.php?user_id=" . $_SESSION['auth_user']['user_id']);
             exit(0);
         }
