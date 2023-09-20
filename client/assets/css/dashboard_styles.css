@@ -227,7 +227,10 @@ body {
 /* --- Profile Card ---*/
 
 /* Table for overview of Users */
-
+th, td {
+    width: 16.67%; /* Equal width for 6 columns */
+    text-align: center; /* Center-align the content */
+}
 .dashboard-table-card{
     width: 100%;
     background-color: white;
@@ -328,6 +331,10 @@ body {
 
 .print-btn:hover{
     background-color: #004187;
+}
+
+.dt-buttons{
+    margin-left: 3rem !important;
 }
 
 /* --pop up-- */
