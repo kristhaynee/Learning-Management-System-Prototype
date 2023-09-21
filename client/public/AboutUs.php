@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -18,10 +22,29 @@
     <script defer src="../assets/js/scroll.js"></script>
   </head>
 
+  <style>
+        .dropdown-toggle::after {
+            display: flex !important;
+            margin-left: 0 !important;
+            vertical-align: 0 !important;
+            content: "";
+            border-top: none !important;
+            border-right: none !important;
+            border-bottom: none !important;
+            border-left: none !important;
+        }
+
+        .profile-image{
+            width: 2rem;
+            margin-left: 0.5rem;
+            margin-bottom: -0.3rem;
+        }
+  </style>
+
   <body>
     <header class="scroll-hidden">
       <div class="aboutUs-header">
-        <nav class="navbar navbar-expand-sm">
+        <nav class="navbar navbar-expand-sm pt-4">
           <div class="container">
           <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../assets/images/Logo.png" alt=""></a>
 
@@ -56,9 +79,35 @@
                 <li class="nav-item">
                   <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white px-3" href="Login.php">My Account</a>
-                </li>
+                <?php
+                // Check if the user is authenticated using the 'auth' session variable
+                if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
+                    $firstName = $_SESSION['auth_user']['fname'];
+                    $profile_img = isset($_SESSION['auth_user']['profile_img']) ? $_SESSION['auth_user']['profile_img'] : '../assets/images/profile_pic/default-profile-icon.jpg';
+
+                    echo '
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="d-flex align-items-center">
+                                    <span>' . $firstName . '</span>';
+
+                    if (!empty($profile_img)) {
+                        echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
+                    } else {
+                        echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
+                    }
+
+                    echo '</div></a>
+                            <ul class="dropdown-menu dropdown-menu-right fixed-width">
+                                <li><a class="dropdown-item" href="Profile.php">My Profile</a></li>
+                                <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
+                            </ul>
+                        </li>
+                    ';
+                } else {
+                    echo '<li class="nav-item"><a class="nav-link text-white px-3" href="Login.php">Login/Sign Up</a></li>';
+                }
+                ?>
               </ul>
             </div>
           </div>
@@ -361,7 +410,8 @@
       <img class="mx-2 my-2" src="../assets/images/share-fill.svg" alt="share">
     </div>
     <div class="col text-end">
-      Copyright &copy; 2023 PISA
+      Copyright &copy; 2023
+      <p><i>This is only a prototype intended for educational and dissertation use.</i></p>
     </div>
   </div>
     </footer>

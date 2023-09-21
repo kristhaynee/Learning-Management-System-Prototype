@@ -41,51 +41,75 @@ session_start();
     .eye-link {
       text-decoration: none; /* Remove underline */
     }
+
+    /* Dropdown */
+    .dropdown-toggle::after {
+        display: flex !important;
+        margin-left: 0 !important;
+        vertical-align: 0 !important;
+        content: "";
+        border-top: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        border-left: none !important;
+      }
   </style>
 
   <body class="gradient-background">
-    <nav class="navbar navbar-expand-sm marginTB">
-      <div class="container">
-      <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../assets/images/Logo.png" alt=""></a>
+  <nav class="navbar navbar-expand-sm marginTB">
+    <div class="container">
+        <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../assets/images/Logo.png" alt=""></a>
 
         <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
             <li class="nav-item">
-                  <a
-                    class="nav-link active text-white px-3"
-                    aria-current="page"
-                    href="Homepage.php"
-                    >Home</a
-                  >
+            <a class="nav-link active text-white px-3" aria-current="page" href="Homepage.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white px-3" href="AboutUs.php">About</a>
+            <a class="nav-link text-white px-3" href="AboutUs.php">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white px-3" href="ContactUs.php">Contact</a>
+            <a class="nav-link text-white px-3" href="ContactUs.php">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
+            <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white px-3" href="Login.php">My Account</a>
-            </li>
-          </ul>
+
+            <?php
+            // Check if the user is authenticated using the 'auth' session variable
+            if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
+            echo '
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right fixed-width" >
+                    <li><a class="dropdown-item" href="Profile.php">My Profile</a></li>
+                    <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
+                </ul>
+                </li>
+            ';
+            } else {
+            echo '<li class="nav-item"><a class="nav-link text-white px-3" href="Login.php">Login/Sign Up</a></li>';
+            }
+            ?>
+        </ul>
         </div>
-      </div>
+    </div>
     </nav>
+
 
     <section class="gradient-background scroll-hidden">
       <div class="container">
