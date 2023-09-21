@@ -8,13 +8,28 @@ body {
     align-items: center; /* Vertically center the content */
     background-color: white;
 }
-
-.navbar-section{
+.dropdown-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
+    padding-left: 11rem;
+}
+.navbar-section, .custom-top {
+    background-color: white;
+}
+
+.custom-top{
+    max-width: 1507px;
 }
 
 #navbar-section{
     overflow: hidden;
+    z-index: 100000000;
+}
+
+.dropdown-section.row {
+    --bs-gutter-x: none !important;
 }
 
 .sticky {
@@ -263,6 +278,14 @@ th, td {
 
 .view-all-button:hover {
     background-color: #23bdb8;
+}
+
+table.dataTable.no-footer {
+    border-bottom: none !important;
+}
+
+.custom-design-pfp{
+    width: 2rem;
 }
 
 /* ------------------------------------------- USERS PAGE STYLE ----------------------------------------------- */
