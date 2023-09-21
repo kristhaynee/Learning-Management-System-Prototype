@@ -88,7 +88,9 @@ include('includes/script.php');
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-student-tab" data-toggle="tab" href="#nav-student" role="tab" aria-controls="nav-student" aria-selected="true">Student</a>
+                                    <?php if($_SESSION['auth_role'] == '0') : ?> <!--ONLY ADMIN CAN VIEW-->
                                     <a class="nav-item nav-link" id="nav-teacher-tab" data-toggle="tab" href="#nav-teacher" role="tab" aria-controls="nav-teacher" aria-selected="false">Teacher</a>
+                                    <?php endif; ?>
                                 </div>
                             </nav>
                         </div>
@@ -144,6 +146,7 @@ include('includes/script.php');
                             ?>
                         </div>
 
+                        <?php if($_SESSION['auth_role'] == '0') : ?> <!--ONLY ADMIN CAN VIEW-->
                         <!-- Teacher table -->
                         <div class="table-responsive tab-pane fade" id="nav-teacher" role="tabpanel" aria-labelledby="nav-student-tab">
                             <?php
@@ -187,6 +190,7 @@ include('includes/script.php');
                             }
                             ?>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -227,7 +231,6 @@ include('includes/script.php');
                             </small>
                         </h2>
                         <div class="icon-block">
-                            <button class="edit-button">Edit</button>
                             <button class="edit-button">View Profile</button>
                         </div>
                     </div>
