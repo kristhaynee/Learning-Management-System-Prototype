@@ -18,9 +18,11 @@ if(isset($_POST['login_btn']))
             $email = $data['email'];
             $role_as = $data['role_as'];
             $fname = $data['fname'];
+            $lname = $data['lname'];
             $userCode = $data['userCode'];
             $suffix = $data['suffix'];
             $username = $data['username'];
+            $profile_img = $data['profile_img'];
     }
 
         $_SESSION['auth'] = true;
@@ -32,7 +34,8 @@ if(isset($_POST['login_btn']))
             'fname' => $fname,
             'lname' => $lname,
             'suffix' => $suffix,
-            'userCode' => $userCode
+            'userCode' => $userCode,
+            'profile_img' => $profile_img,
         ];
         print_r($_SESSION['auth_user']);
 
@@ -51,7 +54,7 @@ if(isset($_POST['login_btn']))
         elseif($_SESSION['auth_role'] == '2') // Student
         {
             $_SESSION['message'] = "Welcome to the dashboard"." ".$fname;
-            header("Location: ../../back-office/dashboard.php?user_id=" . $_SESSION['auth_user']['user_id']);
+            header("Location: ../standby.php?user_id=" . $_SESSION['auth_user']['user_id']);
             exit(0);
         }
     }
