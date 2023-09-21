@@ -7,14 +7,93 @@
 
 </style>
     <header>
-    <!-- LOGO SECTION -->
-    <div class="logo-section pt-3 pb-3 border-bottom border-2">
-        <nav class="navbar navbar-expand-sm">
-            <div class="container">
-                <a class="navbar-brand" href="Homepage.php"><img class="logo-pisa" src="../assets/images/Logo_COLORED.png" alt=""></a>
+    <div class="custom-top border-bottom border-2">
+        <div class="row">
+            <!-- Left Column (Empty) -->
+            <div class="col-lg-4">
+                <!-- This column is intentionally left empty -->
             </div>
-        </nav>
-    </div>
+            
+            <!-- Center Column for Logo -->
+            <div class="col-lg-4 text-center logo-section">
+                <div class="pt-3 pb-3">
+                    <nav class="navbar navbar-expand-sm">
+                        <div class="container">
+                            <a class="navbar-brand" href="Homepage.php"><img class="logo-pisa" src="../assets/images/Logo_COLORED.png" alt=""></a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Right Column for Dropdown -->
+            <div class="col-lg-4 dropdown-section">
+                    <div class="dropdown">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                            <!-- TOP NAV USER ICON PICTURE -->
+                            <?php
+                            if (isset($_SESSION['auth_user']['user_id'])) {
+                                $user_id = $_SESSION['auth_user']['user_id'];
+                                $users = "SELECT * FROM users WHERE user_id='$user_id'";
+                                $user_run = mysqli_query($con, $users);
+
+                                if (mysqli_num_rows($user_run) > 0) {
+                                    while ($user = mysqli_fetch_assoc($user_run)) {
+                                        $image = $user['profile_img'];
+                                        if (empty($image))
+                                            $image = "../../assets/images/profile_pic/default-profile-icon.jpg";
+                                        echo '<img src="../uploads/user/' . $image . '" alt="Profile" class="rounded-circle custom-design-pfp">';
+                                    }
+                                }
+                            }
+                            ?>
+                            <!-- TOP NAV USER ICON PICTURE -->
+                            <span class="d-none d-md-block dropdown-toggle ps-2"><?= $_SESSION['auth_user']['fname']; ?></span>
+                        </a><!-- End Profile Iamge Icon -->
+
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                            <li class="dropdown-header">
+                                <h6><?= $_SESSION['auth_user']['fname']; ?></h6>
+                                <span>
+                                    <?php if (isset($_SESSION['auth_user'])) :
+                                        if ($_SESSION['auth_role'] == '0') {
+                                            echo "Admin";
+                                        } else if ($_SESSION['auth_role'] == '1') {
+                                            echo "Teacher";
+                                        } else {
+                                            echo "Student";
+                                        }
+                                    ?>
+                                    <?php endif; ?>
+                                </span>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="user-profile.php?id=<?= $_SESSION['auth_user']['user_id']; ?>">
+                                    <i class="bi bi-person"></i>
+                                    <span>My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <form action="../allcode.php" method="POST">
+                                    <button type="submit" name="logout_btn" class="dropdown-item d-flex align-items-center" href="#">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        <span>Sign Out</span>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul><!-- End Profile Dropdown Items -->
+                    </div><!-- End Profile Dropdown -->
+            </div>
+        </div><!-- End Row -->
+    </div><!-- End Container -->
+
 
     <!-- Navigation Bar -->
     <div class="d-flex justify-content-center pt-3 pb-3 top-nav navbar-section" id="navbar-section">
