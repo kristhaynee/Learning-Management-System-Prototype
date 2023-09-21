@@ -1,118 +1,12 @@
 <?php
 session_start();
+include('includesClient/header.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
-    <script src="https://kit.fontawesome.com/bbd71fca16.js" crossorigin="anonymous"></script>
-    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="../assets/css/styles.css" />
-    <link rel="stylesheet" href="../assets/css/scroll.css">
-    <script defer src="../assets/js/scroll.js"></script>
-  </head>
-
-  <style>
-    div.input-group-addon{
-      padding: 0.5rem !important;
-      display: flex !important;
-      align-items: center !important;
-      border-top: 1px solid #DEE2E6;    /* Add border to the top */
-      border-right: 1px solid #DEE2E6;  /* Add border to the right */
-      border-bottom: 1px solid #DEE2E6; /* Add border to the bottom */
-      border-radius: 0 5px 5px 0;
-    }
-
-    .fa{
-      color: #24B1D6;
-      text-decoration: none;
-    }
-
-    .eye-link {
-      text-decoration: none; /* Remove underline */
-    }
-
-    /* Dropdown */
-    .dropdown-toggle::after {
-        display: flex !important;
-        margin-left: 0 !important;
-        vertical-align: 0 !important;
-        content: "";
-        border-top: none !important;
-        border-right: none !important;
-        border-bottom: none !important;
-        border-left: none !important;
-      }
-  </style>
-
-  <body class="gradient-background">
-  <nav class="navbar navbar-expand-sm marginTB">
-    <div class="container">
-        <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../assets/images/Logo.png" alt=""></a>
-
-        <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        >
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-1 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link active text-white px-3" aria-current="page" href="Homepage.php">Home</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-white px-3" href="AboutUs.php">About</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-white px-3" href="ContactUs.php">Contact</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
-            </li>
-
-            <?php
-            // Check if the user is authenticated using the 'auth' session variable
-            if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
-            echo '
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Profile
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right fixed-width" >
-                    <li><a class="dropdown-item" href="Profile.php">My Profile</a></li>
-                    <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
-                </ul>
-                </li>
-            ';
-            } else {
-            echo '<li class="nav-item"><a class="nav-link text-white px-3" href="Login.php">Login/Sign Up</a></li>';
-            }
-            ?>
-        </ul>
-        </div>
-    </div>
-    </nav>
-
+  
 
     <section class="gradient-background scroll-hidden">
-      <div class="container">
+      <div class="container mt-5">
         <div class="row align-items-center g-lg-1 py-3">
           <div class="col-lg-6 text-center text-lg-start">
             <h1 class="LoginSignup display-4 fw-bold lh-1 text-white mb-3">
