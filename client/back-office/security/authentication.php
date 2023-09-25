@@ -5,7 +5,7 @@ include('dbcon.php');
 if(!isset($_SESSION['auth']))
 {
     $_SESSION['message'] = "Login to Access Dashboard";
-    header("Location: ../../public/Login.php");
+    header("Location: ../public/Login.php");
     exit(0);
 }
 // else{
