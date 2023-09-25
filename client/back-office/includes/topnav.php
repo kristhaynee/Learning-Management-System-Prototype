@@ -27,69 +27,7 @@
 
             <!-- Right Column for Dropdown -->
             <div class="col-lg-4 dropdown-section">
-                    <div class="dropdown">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <!-- TOP NAV USER ICON PICTURE -->
-                            <?php
-                            if (isset($_SESSION['auth_user']['user_id'])) {
-                                $user_id = $_SESSION['auth_user']['user_id'];
-                                $users = "SELECT * FROM users WHERE user_id='$user_id'";
-                                $user_run = mysqli_query($con, $users);
-
-                                if (mysqli_num_rows($user_run) > 0) {
-                                    while ($user = mysqli_fetch_assoc($user_run)) {
-                                        $image = $user['profile_img'];
-                                        if (empty($image))
-                                            $image = "../../assets/images/profile_pic/default-profile-icon.jpg";
-                                        echo '<img src="../uploads/user/' . $image . '" alt="Profile" class="rounded-circle custom-design-pfp">';
-                                    }
-                                }
-                            }
-                            ?>
-                            <!-- TOP NAV USER ICON PICTURE -->
-                            <span class="d-none d-md-block dropdown-toggle ps-2"><?= $_SESSION['auth_user']['fname']; ?></span>
-                        </a><!-- End Profile Iamge Icon -->
-
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                            <li class="dropdown-header">
-                                <h6><?= $_SESSION['auth_user']['fname']; ?></h6>
-                                <span>
-                                    <?php if (isset($_SESSION['auth_user'])) :
-                                        if ($_SESSION['auth_role'] == '0') {
-                                            echo "Admin";
-                                        } else if ($_SESSION['auth_role'] == '1') {
-                                            echo "Teacher";
-                                        } else {
-                                            echo "Student";
-                                        }
-                                    ?>
-                                    <?php endif; ?>
-                                </span>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="user-profile.php?id=<?= $_SESSION['auth_user']['user_id']; ?>">
-                                    <i class="bi bi-person"></i>
-                                    <span>My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li>
-                                <form action="../allcode.php" method="POST">
-                                    <button type="submit" name="logout_btn" class="dropdown-item d-flex align-items-center" href="#">
-                                        <i class="bi bi-box-arrow-right"></i>
-                                        <span>Sign Out</span>
-                                    </button>
-                                </form>
-                            </li>
-                        </ul><!-- End Profile Dropdown Items -->
-                    </div><!-- End Profile Dropdown -->
+                
             </div>
         </div><!-- End Row -->
     </div><!-- End Container -->
