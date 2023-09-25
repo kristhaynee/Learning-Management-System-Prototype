@@ -3,6 +3,7 @@
     <div class="popup-content w-50 p-5">
         <h2 class="">Add Teacher</h2>
         <p class="mb-4">Create a new account for Teacher</p>
+        
 
         <form class="row g-3" action="././backend/add-teacher-code.php" method="POST">
             <!-- Enter Email Input (Full Width) -->
