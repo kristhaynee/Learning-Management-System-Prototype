@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -19,11 +23,48 @@
     <script defer src="../assets/js/scroll.js"></script>
   </head>
 
+  <style>
+        .imgContainer {
+            width: 100%;
+            height: auto;
+            position: relative;
+            margin-left: none !important;
+            margin-right: none !important;
+        }
+
+        .imgContainer img {
+            width: 80%;
+            height: auto;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Dropdown */
+
+        .dropdown-toggle::after {
+            display: flex !important;
+            margin-left: 0 !important;
+            vertical-align: 0 !important;
+            content: "";
+            border-top: none !important;
+            border-right: none !important;
+            border-bottom: none !important;
+            border-left: none !important;
+        }
+
+        .profile-image{
+            width: 2rem;
+            margin-left: 0.5rem;
+            margin-bottom: -0.3rem;
+        }
+    </style>
+
 <!-- Header -->
   <body>
     <header class="scroll-hidden">
       <div class="testAssessment-header">
-        <nav class="navbar navbar-expand-sm">
+      <nav class="navbar navbar-expand-sm pt-4">
           <div class="container">
           <a class="navbar-brand" href="Homepage.php"><img class="logo-header" src="../assets/images/Logo.png" alt=""></a>
 
@@ -58,9 +99,55 @@
                 <li class="nav-item">
                   <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white px-3" href="Login.php">My Account</a>
-                </li>
+                <?php
+                // Check if the user is authenticated using the 'auth' session variable
+                if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
+                    $firstName = $_SESSION['auth_user']['fname'];
+                    $profile_img = isset($_SESSION['auth_user']['profile_img']) ? $_SESSION['auth_user']['profile_img'] : '../assets/images/profile_pic/default-profile-icon.jpg';
+
+                    echo '
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white px-3" href="standby.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="d-flex align-items-center">
+                                    <span>My Profile</span>';
+
+                          if (!empty($profile_img)) {
+                              echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
+                          } else {
+                              echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
+                          }
+                          echo '</div></a>
+                          <ul class="dropdown-menu dropdown-menu-right fixed-width">
+                                <li class="dropdown-header">
+                                    <h6>' . $_SESSION['auth_user']['fname'] . '</h6>
+                                    <span>';
+                                if (isset($_SESSION['auth_user'])) {
+                                    if ($_SESSION['auth_role'] == '0') {
+                                        echo "Admin";
+                                    } else if ($_SESSION['auth_role'] == '1') {
+                                        echo "Teacher";
+                                    } else {
+                                        echo "Student";
+                                    }
+                                }
+                                echo '</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="standby.php">User Hub</a></li>
+                                <li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
+                            </ul>
+                        </li>
+                    ';
+                } else {
+                    echo '<li class="nav-item"><a class="nav-link text-white px-3" href="Login.php">Login/Sign Up</a></li>';
+                }
+                ?>
               </ul>
             </div>
           </div>
@@ -159,13 +246,13 @@
 
 <!-- EndPage Contents -->
 
- <!-- Footer -->
+<!-- Footer -->
 <section class="gradient-background">
       <footer class="container py-5 text-white">
         <div class="row">
           <div class="col-sm-6 col-md-6 mb-3">
             <form>
-              <img class="logo-footer" src="../images/Logo.png" alt="PISA">
+              <img class="logo-footer" src="../assets/images/Logo.png" alt="PISA">
               <p class="py-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
               </p>
             </form>
@@ -199,15 +286,16 @@
       
   <div class="row">
     <div class="col">
-      <img class="mx-2 my-2" src="../images/facebook.svg" alt="facebook">
-      <img class="mx-2 my-2" src="../images/twitter.svg" alt="twitter">
-      <img class="mx-2 my-2" src="../images/instagram.svg" alt="instagram">
-      <img class="mx-2 my-2" src="../images/youtube.svg" alt="youtube">
-      <img class="mx-2 my-2" src="../images/linkedin.svg" alt="linkedin">
-      <img class="mx-2 my-2" src="../images/share-fill.svg" alt="share">
+      <img class="mx-2 my-2" src="../assets/images/facebook.svg" alt="facebook">
+      <img class="mx-2 my-2" src="../assets/images/twitter.svg" alt="twitter">
+      <img class="mx-2 my-2" src="../assets/images/instagram.svg" alt="instagram">
+      <img class="mx-2 my-2" src="../assets/images/youtube.svg" alt="youtube">
+      <img class="mx-2 my-2" src="../assets/images/linkedin.svg" alt="linkedin">
+      <img class="mx-2 my-2" src="../assets/images/share-fill.svg" alt="share">
     </div>
     <div class="col text-end">
-      Copyright &copy; 2023 PISA
+      Copyright &copy; 2023
+      <p><i>This is only a prototype intended for educational and dissertation use.</i></p>
     </div>
   </div>
     </footer>
