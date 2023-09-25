@@ -4,6 +4,9 @@ include('includes/topnav.php');
 include('includes/script.php');
 ?>
 
+<head>
+    <title>Reports</title>
+</head>
 
 <section class="content">
 

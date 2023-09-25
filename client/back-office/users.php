@@ -5,7 +5,12 @@ include('includes/header.php');
 include('includes/topnav.php');
 include('includes/script.php');
 include('elements/popup/new-user-form.php');
+include('elements/popup/edit-user-form.php');
 ?>
+
+<head>
+    <title>Users</title>
+</head>
 
 <section class="content">
 
@@ -31,13 +36,13 @@ include('elements/popup/new-user-form.php');
 
     <!-- TABLE STUDENT -->
     <div class="container mt-3 table-responsive tab-pane fade show active" role="tabpanel" aria-labelledby="nav-student-tab" id="nav-student">
-        <div class="card">
+        <div class="card" style="margin-bottom: 10rem">
             <div class="card-header">
                 <div class="d-flex flex-row-reverse bd-highlight p-3">
                 </div>
             </div>
 
-            <div class="card-body mx-5 mb-5 px-3">
+            <div class="card-body mx-5 mb-5 pb-5 px-3">
                 <?php
                 $query = "SELECT * FROM users WHERE role_as='2'";
                 $query_run = mysqli_query($con, $query);
@@ -74,8 +79,8 @@ include('elements/popup/new-user-form.php');
                                         ?>
                                     </td>
                                     <td>
-                                        <button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                                        <button class="btn"><img src="../assets/images/archive.svg" alt="edit"></button>
+                                        <button type="button" class="btn show-edit-popup" data-userid="<?=$row['user_id'];?>"><img src="../assets/images/pencil.svg" alt="edit"></button>
+                                        <button class="btn"><img src="../assets/images/archive.svg" alt="archive"></button>
                                     </td>
                                 </tr>
                         <?php
@@ -119,7 +124,7 @@ include('elements/popup/new-user-form.php');
 
     <!-- TABLE TEACHER -->
     <div class="container mt-3 table-responsive tab-pane fade" role="tabpanel" aria-labelledby="nav-teacher-tab" id="nav-teacher">
-    <div class="card">
+    <div class="card" style="margin-bottom: 10rem">
         <div class="card-header">
             <div class="d-flex flex-row-reverse bd-highlight">
                 <button class="text-light add-teach-btn" id="show-popup">Add Teacher</button>
@@ -164,7 +169,7 @@ include('elements/popup/new-user-form.php');
                             ?>
                         </td>
                         <td>
-                            <button class="btn"><img src="../assets/images/pencil.svg" alt="edit"></button>
+                            <button type="button" class="btn show-edit-popup" data-userid="<?=$row['user_id'];?>"><img src="../assets/images/pencil.svg" alt="edit"></button>
                             <button class="btn"><img src="../assets/images/archive.svg" alt="archive"></button>
                         </td>
                     </tr>

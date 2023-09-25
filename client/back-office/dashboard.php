@@ -6,6 +6,10 @@ include('includes/topnav.php');
 include('includes/script.php');
 ?>
 
+<head>
+    <title>Dashboard</title>
+</head>
+
 <!-- Welcome Message -->
 <section class="content"> 
     <div class="container mt-1 mb-5">
@@ -232,6 +236,9 @@ include('includes/script.php');
                         </h2>
                         <div class="icon-block">
                             <button class="edit-button">View Profile</button>
+                        </div>
+                        <div class="icon-block">
+                            <button class="btn btn-info">Log Out</button>
                         </div>
                     </div>
                 </div>
