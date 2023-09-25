@@ -379,12 +379,20 @@ table.dataTable.no-footer {
     display: flex; /* Add this class to show the popup */
     justify-content: center;
     align-items: center;
+    z-index: 100000000000000000000;
 }
 
 
 .popup-content {
     background-color: #fff;
     margin: 10rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup-content-assessment{
+    background-color: #fff;
+    margin: 3rem !important;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
@@ -407,3 +415,51 @@ table.dataTable.no-footer {
 }
 
 /* --popup-- */
+
+
+
+/* CREATE ASSESSMENT */
+
+.right-container{
+    max-height: 100%; 
+    overflow-y: scroll;
+}
+
+.right-container::-webkit-scrollbar {
+    width: 0.4em; /* Width of the vertical scrollbar */
+}
+
+.right-container::-webkit-scrollbar-track {
+    background: transparent; /* Background of the scrollbar track */
+}
+
+.right-container::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Color of the scrollbar thumb */
+}
+
+.fixed-section {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Change to your desired background color */
+    padding: 15px;
+    z-index: 100;
+}
+
+/* Style for the scrollable section */
+.scrollable-section {
+    max-height: calc(100vh - 150px); /* Adjust the maximum height as needed */
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.fixed-section-bottom {
+    position: sticky;
+    bottom: 0; /* Place the fixed section at the bottom */
+    background-color: white; /* Change to your desired background color */
+    padding: 15px;
+    z-index: 1;
+}
+
+.delete-question{
+    font-size: 20px;
+}
