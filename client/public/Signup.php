@@ -4,6 +4,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,9 +80,34 @@ session_start();
             <li class="nav-item">
               <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white px-3" href="Login.php">My Account</a>
-            </li>
+            <?php
+                // Check if the user is authenticated using the 'auth' session variable
+                if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
+                    $firstName = $_SESSION['auth_user']['fname'];
+                    $profile_img = isset($_SESSION['auth_user']['profile_img']) ? $_SESSION['auth_user']['profile_img'] : '../assets/images/profile_pic/default-profile-icon.jpg';
+
+                    echo '
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white px-3" href="standby.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="d-flex align-items-center">
+                                    <span>' . $firstName . '</span>';
+
+                          if (!empty($profile_img)) {
+                              echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
+                          } else {
+                              echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
+                          }
+                    echo '</div></a>
+                            <ul class="dropdown-menu dropdown-menu-right fixed-width">
+                                <li><a class="dropdown-item" href="standby.php">My Profile</a></li>
+                                <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
+                            </ul>
+                        </li>
+                    ';
+                } else {
+                    echo '<li class="nav-item"><a class="nav-link text-white px-3" href="Login.php">Login/Sign Up</a></li>';
+                }
+                ?>
           </ul>
         </div>
       </div>

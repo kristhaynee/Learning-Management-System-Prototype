@@ -2,9 +2,6 @@
 <html lang="en">
   
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -110,19 +107,39 @@
 
                     echo '
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white px-3" href="standby.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="d-flex align-items-center">
-                                    <span>' . $firstName . '</span>';
+                                    <span>My Profile</span>';
 
-                    if (!empty($profile_img)) {
-                        echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
-                    } else {
-                        echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
-                    }
-
-                    echo '</div></a>
-                            <ul class="dropdown-menu dropdown-menu-right fixed-width">
-                                <li><a class="dropdown-item" href="Profile.php">My Profile</a></li>
+                          if (!empty($profile_img)) {
+                              echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
+                          } else {
+                              echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
+                          }
+                          echo '</div></a>
+                          <ul class="dropdown-menu dropdown-menu-right fixed-width">
+                                <li class="dropdown-header">
+                                    <h6>' . $_SESSION['auth_user']['fname'] . '</h6>
+                                    <span>';
+                                if (isset($_SESSION['auth_user'])) {
+                                    if ($_SESSION['auth_role'] == '0') {
+                                        echo "Admin";
+                                    } else if ($_SESSION['auth_role'] == '1') {
+                                        echo "Teacher";
+                                    } else {
+                                        echo "Student";
+                                    }
+                                }
+                                echo '</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="standby.php">User Hub</a></li>
+                                <li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
                             </ul>
                         </li>
@@ -171,17 +188,15 @@
                 // console.log("hi");
               }
 
-              if(navlink.href.includes('Signup.php')){
+              if(navlink.href.includes('standby.php')){
                 header.classList.remove('homepage-header')
                 header.classList.remove('aboutUs-header')
                 header.classList.remove('contactUs-header')
                 header.classList.remove('faqs-header')
-                
                 document.body.classList.add('gradient-background')
               }
 
               
             }
         })
-
         </script>

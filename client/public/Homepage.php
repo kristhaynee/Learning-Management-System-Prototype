@@ -6,6 +6,13 @@ include('includesClient/header.php');
 ?>
 
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+</head>
+
+
         <div class="container flex-lg-row-reverse align-items-center g-5">
         <div class="col-10 col-sm-8 col-lg-6"></div>
         <div class="col-lg-12 banner-slogan">
@@ -17,8 +24,8 @@ include('includesClient/header.php');
             </p>
         </div>
         <div class="button-container-div ">
-            <a type="button" href="Login.php" class="btn-assessment">
-                <span>Start Today!</span>
+            <a type="button" href="testAssessment.php" class="btn-assessment">
+                <span>View Assessments</span>
             </a>
         </div>
     </div>
