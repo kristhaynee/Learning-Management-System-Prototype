@@ -5,7 +5,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
 
     <script defer src="../assets/js/navbar-sticky.js"></script>
@@ -560,48 +564,57 @@
         } );
     } );
     </script>
+    <!-- Export Buttons -->
+
 
     <!-- User Table -->
     <script>
-        $(document).ready(function() {
-            // Hide both tables initially
+    $(document).ready(function() {
+        // Function to set the active tab
+        function setActiveTab(tabId) {
+            // Hide both tables
             $('#nav-student').hide();
             $('#nav-teacher').hide();
 
-            // Check if there's a 'tab' query parameter in the URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const tabParam = urlParams.get('tab');
+            // Show the selected tab content
+            $(`#${tabId}`).show();
 
-            // Show the corresponding tab based on the query parameter
-            if (tabParam === 'teacher') {
-                $('#nav-teacher').show();
-                $('.nav-link[href="#nav-teacher"]').tab('show'); // Activate the teacher's tab
-            } else {
-                $('#nav-student').show();
-                $('.nav-link[href="#nav-student"]').tab('show'); // Activate the student's tab
-            }
+            // Activate the corresponding tab link
+            $(`.nav-link[href="#${tabId}"]`).tab('show');
 
-            // Tab click event handler
-            $('.nav-link').click(function() {
-                // Hide both tables
-                $('#nav-student').hide();
-                $('#nav-teacher').hide();
+            // Update localStorage with the active tab
+            localStorage.setItem('activeTab', tabId);
+        }
 
-                // Show the selected tab content
-                $($(this).attr('href')).show();
+        // Check if there's a 'tab' query parameter in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tabParam = urlParams.get('tab');
 
-                // Update the URL with the selected tab
-                const tabId = $(this).attr('href').substring(1);
-                const newUrl = `${window.location.pathname}?tab=${tabId}`;
-                window.history.replaceState({}, '', newUrl);
-            });
+        // Get the active tab from localStorage
+        const activeTab = localStorage.getItem('activeTab');
+
+        // Show the corresponding tab based on localStorage or query parameter
+        if (tabParam === 'teacher' || activeTab === 'nav-teacher') {
+            setActiveTab('nav-teacher');
+        } else {
+            setActiveTab('nav-student');
+        }
+
+        // Tab click event handler
+        $('.nav-link').click(function() {
+            const tabId = $(this).attr('href').substring(1);
+            setActiveTab(tabId);
+
+            // Update the URL with the selected tab
+            const newUrl = `${window.location.pathname}?tab=${tabId}`;
+            window.history.replaceState({}, '', newUrl);
         });
-    </script>
+    });
+</script>
     <!-- User Table -->
 
 
     <!-- Add User Popup -->
-
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Get references to the pop-up and the button
@@ -625,8 +638,101 @@
 
     });
     </script>
-
     <!-- Add User Popup -->
+
+    <!-- Edit User Popup -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const showPopupButtons = document.querySelectorAll('.show-edit-popup');
+        const closePopupButton = document.getElementById('close-edit-popup');
+        const popup = document.getElementById('edit-user');
+        const form = document.querySelector('#edit-user-form');
+
+        function showPopup(event) {
+            const userId = event.currentTarget.getAttribute('data-userid');
+
+            // Send an AJAX request to fetch user data
+            fetch('./backend/fetchUserData.php?user_id=' + userId)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(userData => {
+                    // Update the form fields with the user data
+                    form.querySelector('[name="user_id"]').value = userData.user_id;
+                    form.querySelector('[name="email"]').value = userData.email;
+                    form.querySelector('[name="fname"]').value = userData.fname;
+                    form.querySelector('[name="lname"]').value = userData.lname;
+                    form.querySelector('[name="suffix"]').value = userData.suffix;
+                    form.querySelector('[name="username"]').value = userData.username;
+                    form.querySelector('[name="password"]').value = userData.password;
+
+                    // Set the selected option in the status dropdown based on the retrieved status value
+                    const statusDropdown = form.querySelector('#status');
+                    statusDropdown.value = userData.status; // Assuming userData.status contains 0 or 1
+
+                    popup.classList.add('show');
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                });
+        }
+
+        function closePopup() {
+            popup.classList.remove('show');
+            window.location.reload();
+        }
+
+        function updateUserData(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Serialize form data to send via AJAX
+            const formData = new FormData(form);
+
+            // Send an AJAX request to update the user data
+            fetch('./backend/edit-user.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(result => {
+                const messageContainer = document.getElementById('edit-user-message');
+                if (result.success) {
+                    messageContainer.classList.add('alert-success');
+                    messageContainer.classList.remove('alert-danger');
+                    messageContainer.textContent = 'User updated successfully';
+                    // Optionally, close the popup here if needed
+                    // closePopup();
+                } else {
+                    messageContainer.classList.add('alert-danger');
+                    messageContainer.classList.remove('alert-success');
+                    messageContainer.textContent = 'User update failed: ' + result.error;
+                }
+                messageContainer.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error updating user:', error);
+            });
+        }
+
+        showPopupButtons.forEach(function (button) {
+            button.addEventListener('click', showPopup);
+        });
+
+        closePopupButton.addEventListener('click', closePopup);
+
+        // Add a submit event listener to the form
+        form.addEventListener('submit', updateUserData);
+    });
+    </script>
+    <!-- Edit User Popup -->
 
     <!-- Add Subject Popup -->
     <script>
@@ -680,6 +786,126 @@
     </script>
     <!-- Create Assessment Popup -->
 
+    <!-- Edit Assessment Popup -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const showPopupButton = document.getElementById('edit-assessment-show-popup');
+        const closePopupButton = document.getElementById('edit-assessment-close-popup');
+        const popup = document.getElementById('edit-assessment-popup');
+        const form = document.querySelector('#edit-assessment-popup form');
+
+        function showPopup(event) {
+            const assessmentId = event.currentTarget.getAttribute('data-assessmentid');
+
+            // Send an AJAX request to fetch assessment data based on assessmentId
+            fetch('././backend/fetchAssessmentData.php?assessment_id=' + assessmentId)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(assessmentData => {
+                    // Populate the form fields with the assessment data
+                    document.getElementById('assessment_id').value = assessmentData.assessment_id;
+                    document.getElementById('assessmentName').value = assessmentData.assessment_name;
+                    document.getElementById('comment').value = assessmentData.comment;
+                    document.getElementById('status').value = assessmentData.status;
+
+                    // Set the selected option in the "subject" dropdown based on the assessment's subjectID
+                    const subjectDropdown = document.getElementById('subject');
+                    const subjectId = assessmentData.subjectID;
+
+                    for (let i = 0; i < subjectDropdown.options.length; i++) {
+                        const option = subjectDropdown.options[i];
+                        if (option.value == subjectId) {
+                            option.selected = true;
+                        } else {
+                            option.selected = false; // Ensure other options are not selected
+                        }
+                    }
+
+                    popup.classList.add('show');
+                })
+                .catch(error => {
+                    console.error('Error fetching assessment data:', error);
+                });
+        }
+
+        function closePopup() {
+            popup.classList.remove('show');
+        }
+
+        // Add a click event listener to the "Edit Assessment" button
+        showPopupButton.addEventListener('click', showPopup);
+
+        // Add a click event listener to the "Close" button
+        closePopupButton.addEventListener('click', closePopup);
+    });
+    </script>
+    <!-- Edit Assessment Popup -->
+
+    <!-- Add Question Popup -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get references to the pop-up and the button
+            const popup = document.getElementById('add-question-popup');
+            const showPopupButton = document.getElementById('show-add-question-popup');
+            const closePopupButton = document.getElementById('close-add-question-popup');
+            const assessmentIdInput = document.getElementById("assessment_id");
+
+            showPopupButton.addEventListener("click", function () {
+                const assessmentId = showPopupButton.getAttribute("data-assessmentid");
+                assessmentIdInput.value = assessmentId;
+            });
+
+            // Function to show the pop-up
+            function showPopup() {
+                popup.classList.add('show'); // Add the 'show' class
+            }
+
+            // Function to close the pop-up
+            function closePopup() {
+                popup.classList.remove('show'); // Remove the 'show' class
+            }
+
+            // Event listeners
+            showPopupButton.addEventListener('click', showPopup);
+            closePopupButton.addEventListener('click', closePopup);
+
+        });
+    </script>
+    <!-- Add Question Popup -->
+
+    <!-- Add Question Popup // Buttons functionality for displaying the image and video input field -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const addImageButton = document.querySelector(".add-image");
+            const addVideoButton = document.querySelector(".add-video");
+            const removeButtons = document.querySelectorAll(".remove-input");
+            const imageInput = document.getElementById("image-input");
+            const videoInput = document.getElementById("video-input");
+
+            addImageButton.addEventListener("click", function () {
+                imageInput.style.display = "block";
+            });
+
+            addVideoButton.addEventListener("click", function () {
+                videoInput.style.display = "block";
+            });
+
+            removeButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const targetId = button.getAttribute("data-target");
+                    const targetInput = document.getElementById(targetId);
+                    targetInput.style.display = "none";
+                });
+            });
+        });
+    </script>
+
+    <!-- Add Question Popup // Buttons functionality for displaying the image and video input field -->
+
     <!---------------------------------------- QUIZ MAKER PART ---------------------------------------->
 
 
@@ -691,7 +917,6 @@
         const temporaryPassword = generateRandomPassword();
         passwordInput.value = temporaryPassword;
     }
-
     function generateRandomPassword() {
         // Implement your password generation logic here
         // This is just a simple example, replace it with your preferred method
