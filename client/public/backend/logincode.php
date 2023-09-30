@@ -36,6 +36,7 @@ if(isset($_POST['login_btn']))
             'suffix' => $suffix,
             'userCode' => $userCode,
             'profile_img' => $profile_img,
+            'role_as' => $role_as,
         ];
         print_r($_SESSION['auth_user']);
 
@@ -53,7 +54,6 @@ if(isset($_POST['login_btn']))
         }
         elseif($_SESSION['auth_role'] == '2') // Student
         {
-            $_SESSION['message'] = "Welcome to the dashboard"." ".$fname;
             header("Location: ../standby.php?user_id=" . $_SESSION['auth_user']['user_id']);
             exit(0);
         }

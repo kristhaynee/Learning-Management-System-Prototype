@@ -796,6 +796,7 @@
 
         function showPopup(event) {
             const assessmentId = event.currentTarget.getAttribute('data-assessmentid');
+            console.log('Assessment ID:', assessmentId);
 
             // Send an AJAX request to fetch assessment data based on assessmentId
             fetch('././backend/fetchAssessmentData.php?assessment_id=' + assessmentId)
@@ -807,7 +808,7 @@
                 })
                 .then(assessmentData => {
                     // Populate the form fields with the assessment data
-                    document.getElementById('assessment_id').value = assessmentData.assessment_id;
+                    document.getElementById('assessmentId').value = assessmentData.assessment_id;
                     document.getElementById('assessmentName').value = assessmentData.assessment_name;
                     document.getElementById('comment').value = assessmentData.comment;
                     document.getElementById('status').value = assessmentData.status;
@@ -903,8 +904,152 @@
             });
         });
     </script>
-
     <!-- Add Question Popup // Buttons functionality for displaying the image and video input field -->
+
+    <!-- View question details -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const showPopupButtons = document.querySelectorAll('.list-group-item');
+            const closePopupButton = document.getElementById('question-details-close-popup');
+            const popup = document.getElementById('question-details-popup');
+            const form = document.querySelector('#question-details-popup form');
+            
+            function showPopup(event) {
+                const questionId = event.currentTarget.getAttribute('data-questionId');
+                
+                // Send an AJAX request to fetch question data based on questionId
+                fetch('././backend/fetchQuestionsData.php?question_id=' + questionId)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(questionData => {
+                        // Populate the form fields with the question data
+                        document.getElementById('question_id').value = questionData.question_id;
+                        document.getElementById('question').value = questionData.questionText;
+                        
+                        fetchChoices(questionId);
+                        popup.classList.add('show');
+                    })
+                    .catch(error => {
+                        console.error('Error fetching question data:', error);
+                    });
+            }
+            
+            function fetchChoices(questionId) {
+                // Send an AJAX request to fetch choices based on the questionId
+                fetch('././backend/fetchChoicesData.php?question_id=' + questionId)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(choicesData => {
+                        console.log('Fetched choices data:', choicesData);
+                        
+                        const choicesContainer = document.querySelector('.choices-container');
+                        
+                        // Clear the existing choices
+                        document.getElementById('column1').innerHTML = '';
+                        document.getElementById('column2').innerHTML = '';
+                        
+                        choicesData.forEach((choice, index) => {
+                            const choiceContainer = document.createElement('div');
+                            choiceContainer.classList.add('col-md-12');
+                            
+                            const inputGroup = document.createElement('div');
+                            inputGroup.classList.add('input-group');
+                            
+                            // Add a margin-bottom to the input-group element
+                            inputGroup.style.marginBottom = '10px';
+                            
+                            const inputGroupText = document.createElement('div');
+                            inputGroupText.classList.add('input-group-text');
+                            
+                            const isCorrectChoice = choice.IsCorrectChoice === '0';
+                            
+                            const checkbox = document.createElement('input');
+                            checkbox.type = 'checkbox';
+                            checkbox.name = `is_correct_choice[${index}]`;
+                            checkbox.setAttribute('aria-label', 'Checkbox for following text input');
+                            // Set the checkbox based on isCorrectChoice value
+                            checkbox.checked = isCorrectChoice;
+                            checkbox.disabled = true; // Disable the checkbox
+                            
+                            const inputText = document.createElement('input');
+                            inputText.type = 'text';
+                            inputText.name = `choice[${index}]`;
+                            inputText.classList.add('form-control');
+                            inputText.setAttribute('aria-label', 'Text input with checkbox');
+                            // Set the input text value from the database
+                            inputText.value = choice.choiceText;
+                            inputText.disabled = true; // Disable the text input
+                            
+                            inputGroupText.appendChild(checkbox);
+                            inputGroup.appendChild(inputGroupText);
+                            inputGroup.appendChild(inputText);
+                            choiceContainer.appendChild(inputGroup);
+                            
+                            // Determine which column to append the choice to based on the index
+                            if (index % 2 === 0) {
+                                document.getElementById('column1').appendChild(choiceContainer);
+                            } else {
+                                document.getElementById('column2').appendChild(choiceContainer);
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching choices data:', error);
+                    });
+            }
+            
+            function closePopup() {
+                popup.classList.remove('show');
+            }
+            
+            // Add click event listeners to the "View Question" buttons
+            showPopupButtons.forEach(button => {
+                button.addEventListener('click', showPopup);
+            });
+            
+            // Add a click event listener to the "Close" button
+            closePopupButton.addEventListener('click', closePopup);
+        });
+    </script>
+    <!-- View question details -->
+
+    <!-- Assessment Question Page // Delete a question -->
+    <script>
+    function deleteQuestion(questionId) {
+        if (confirm("Are you sure you want to delete this question?")) {
+            // Send an AJAX request to delete the question on the server
+            // You can use JavaScript/jQuery to send the request, or use other methods like fetch or Axios
+            // Here's a basic example using jQuery's AJAX:
+
+            $.ajax({
+                url: '././backend/delete-question.php', // Replace with the URL of your delete question script
+                type: 'POST',
+                data: { questionId: questionId },
+                success: function(response) {
+                    // Handle the success response here, e.g., remove the deleted question from the UI
+                    if (response === 'success') {
+                        alert('Question deleted successfully.');
+                        location.reload(); // Reload the page to reflect changes
+                    } else {
+                        alert('Failed to delete the question.');
+                    }
+                },
+                error: function() {
+                    alert('Error occurred while deleting the question.');
+                }
+            });
+        }
+    }
+</script>
+    <!-- Assessment Question Page // Delete a question -->
 
     <!---------------------------------------- QUIZ MAKER PART ---------------------------------------->
 
@@ -933,3 +1078,55 @@
     }
     </script>
     <!-- Add Teacher / Generate Password -->
+
+
+    <!---------------------------------------- PROFILE POPUP ---------------------------------------->
+<!-- Profile Popup -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get references to the pop-up and the button
+        const popup = document.getElementById('profile-popup');
+        const showPopupButton = document.getElementById('profile-show-popup');
+        const closePopupButton = document.getElementById('profile-close-popup');
+        
+        // Function to show the pop-up
+        function showPopup() {
+            // Add the 'show' class
+            popup.classList.add('show');
+            
+            // Fetch user data when the pop-up is shown
+            fetchUserData();
+        }
+
+        function closePopup() {
+            popup.classList.remove('show');
+        }
+
+        showPopupButton.addEventListener('click', showPopup);
+        closePopupButton.addEventListener('click', closePopup);
+
+        function fetchUserData() {
+            const user_id = document.getElementById('user-id').value;
+
+            fetch(`./backend/fetchUserData.php?user_id=${user_id}`)
+                .then((response) => response.json())
+                .then((userData) => {
+                    // Populate the form fields with the retrieved user data
+                    document.querySelector('input[name="fname"]').value = userData.fname;
+                    document.querySelector('input[name="lname"]').value = userData.lname;
+                    document.querySelector('input[name="email"]').value = userData.email;
+                    document.querySelector('input[name="username"]').value = userData.username;
+
+                    // Leave the password field empty to allow password update
+                    document.querySelector('input[name="new_password"]').value = '';
+                })
+                .catch((error) => {
+                    console.error("Error fetching user data: " + error);
+                });
+        }
+
+    });
+</script>
+
+<!-- Profile Popup -->
+

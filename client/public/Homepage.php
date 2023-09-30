@@ -70,7 +70,7 @@ include('includesClient/header.php');
     </div>
 
     <section class="wrapper">
-    <div class="container-fostrap">
+    <!-- <div class="container-fostrap">
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -140,7 +140,7 @@ include('includesClient/header.php');
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </section>
 </section>
 

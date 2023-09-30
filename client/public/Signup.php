@@ -124,7 +124,7 @@ session_start();
               Ignite Your Learning Potenial, Empower Your Future through Education Excellence!
             </p>
             <div class="imgContainer" >
-              <img src="../images/signup_img.png" class="signup-img" alt="">
+              <img src="../assets/images/signup_img.png" class="signup-img" alt="">
              </div>
           </div>
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../config/dbcon.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +20,8 @@ session_start();
     <link rel="stylesheet" href="../assets/css/styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/bbd71fca16.js" crossorigin="anonymous"></script>
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/scroll.css">
     <script defer src="../assets/js/scroll.js"></script>
   </head>
@@ -172,29 +175,44 @@ session_start();
 
 <!-- Page Contents -->
 
-    <!-- Searchbar -->
-    <section class="mt-4 scroll-slide-hidden">
+<!-- Searchbar -->
+<section class="mt-4 scroll-slide-hidden">
     <div class="container w-75">
         <br/>
         <div class="row justify-content-center">
-            <form class="card card-sm">
+            <form class="card card-sm" id="search-form">
                 <div class="card-body row no-gutters align-items-center">
                     <!-- Category Filter Dropdown -->
+                    <input type="hidden" name="search" value="1">
                     <div class="col-auto">
-                        <select class="form-control form-control-lg filter-dropdown-design">
+                        <select class="form-control form-control-lg filter-dropdown-design" name="subject_filter">
                             <option value="all">Filter by Subject</option>
-                            <option value="category1">Math</option>
-                            <option value="category2">Science</option>
-                            <!-- Add more categories as needed -->
+                            <?php
+                            // Retrieve the available subjects from the database
+                            $subjectQuery = "SELECT subject_id, subject_name FROM subject";
+                            $subjectResult = mysqli_query($con, $subjectQuery);
+
+                            if ($subjectResult) {
+                                while ($row = mysqli_fetch_assoc($subjectResult)) {
+                                    $subject_id = $row['subject_id'];
+                                    $subject_name = $row['subject_name'];
+                                    echo "<option value='$subject_id'>$subject_name</option>";
+                                }
+                            }
+                            ?>
                         </select>
                     </div>
-                    <!-- Search Text Input -->
+                    <!-- Search Text Input for Assessment Name -->
                     <div class="col">
-                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search Assessments or keywords">
+                      <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search by Assessment Title" name="keyword">
                     </div>
                     <!-- Search Button -->
                     <div class="col-auto">
-                        <button class="btn btn-lg srch-btn-color" type="submit">Search</button>
+                      <button class="btn btn-lg srch-btn-color" type="submit">Search</button>
+                  
+                      <button class="btn btn-lg srch-btn-color" type="button" id="reset-button">
+                        <i class="fa-solid fa-rotate"></i>
+                      </button>
                     </div>
                 </div>
             </form>
@@ -205,43 +223,13 @@ session_start();
 </section>
 
 
-    <!-- Searchbar -->
+<!-- Assessment List -->
+<section class="mb-5" style="margin: 0 12.5%;">
+    <div id="assessment-results" class="trans-delay-1 scroll-slide-hidden assessment-list">
+        <!-- Results here -->
+    </div>
+</section>
 
-    <!-- assessment list -->
-    <section class="mb-5">
-    <div class="d-flex justify-content-center trans-delay-1 scroll-slide-hidden">
-        <div class="card w-75 p-4 custom-border">
-            <div class="d-flex">
-                <div class="col-md-8">
-                    <h5 class="card-title assessment-title-custom">Assessment Title Lorem ipsum dolor sit amet</h5>
-                    <p class="card-text"><span>Posted by </span><strong>Teacher's Name</strong></p>
-                    <p class="assessment-tags">#assessments #tags #here</p>
-                </div>
-                <div class="col-md-3 align-items-center justify-content-center">
-                    <a type="button" class="btn-takeAssessment text-middle" href="#">
-                        <span>Take Assessment</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-center trans-delay-2 scroll-slide-hidden">
-        <div class="card w-75 p-4 custom-border">
-            <div class="d-flex">
-                <div class="col-md-8">
-                    <h5 class="card-title assessment-title-custom">Assessment Title Lorem ipsum dolor sit amet</h5>
-                    <p class="card-text"><span>Posted by </span><strong>Teacher's Name</strong></p>
-                    <p class="assessment-tags">#assessments #tags #here</p>
-                </div>
-                <div class="col-md-3 align-items-center justify-content-center">
-                    <a type="button" class="btn-takeAssessment text-middle" href="#">
-                        <span>Take Assessment</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
     <!-- assessment list -->
 
 <!-- EndPage Contents -->
@@ -306,5 +294,52 @@ session_start();
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
       ></script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Function to load all assessments when the page loads
+          function loadAllAssessments() {
+              fetch("backend/fetchAllAssessments.php")
+                  .then(response => response.text())
+                  .then(data => {
+                      const assessmentResults = document.querySelector("#assessment-results");
+                      assessmentResults.innerHTML = data;
+                  })
+                  .catch(error => {
+                      console.error("Error:", error);
+                  });
+          }
+
+          // Load all assessments when the page loads
+          loadAllAssessments();
+
+          const searchForm = document.querySelector("#search-form");
+          const resetButton = document.querySelector("#reset-button");
+
+          searchForm.addEventListener("submit", function(event) {
+              event.preventDefault(); // Prevent the form from submitting traditionally
+
+              // Serialize the form data
+              const formData = new FormData(searchForm);
+
+              // Make an AJAX request to fetch results
+              fetch("backend/fetchAssessmentDataPublic.php?" + new URLSearchParams(formData).toString())
+              .then(response => response.text())
+              .then(data => {
+                  const assessmentResults = document.querySelector("#assessment-results");
+                  assessmentResults.innerHTML = data;
+              })
+              .catch(error => {
+                  console.error("Error:", error);
+              });
+          });
+
+          // Event listener for the reset button
+          resetButton.addEventListener("click", function() {
+              loadAllAssessments(); // Load all assessments when reset is clicked
+          });
+      });
+      </script>
+
   </body>
   </html>

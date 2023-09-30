@@ -6,13 +6,13 @@
                 <p class="mb-4">Update assessment details</p>
 
                 <!-- Hidden input field to store the assessment_id -->
-                <input type="hidden" name="assessment_id" id="assessment_id">
+                <input type="hidden" name="assessmentId" id="assessmentId">
 
                 <!-- Assessment Name -->
                 <div class="col-md-12">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="assessmentName" placeholder="Assessment Name"
-                               name="assessmentName" required>
+                            name="assessmentName">
                         <label for="assessmentName"><i>Assessment Name</i><span style="color:red;">*</span></label>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <!-- Subject -->
                 <div class="col-md-12 mt-3">
                     <div class="form-floating">
-                        <select name="subject" required class="form-control" id="subject">
+                        <select name="subject" class="form-control" id="subject">
                             <option value="">--Select Subject--</option>
                             <?php
                             $sql = "SELECT subject_id, subject_name FROM subject";
@@ -43,20 +43,27 @@
                     </div>
                 </div>
 
-
                 <!-- Comments -->
                 <div class="col-md-12 mt-3">
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="comment"
-                                  name="comment" style="height: 100px"></textarea>
+                            name="comment" style="height: 100px"></textarea>
                         <label for="comment"><i>Comments</i></label>
+                    </div>
+                </div>
+
+                <!-- File Upload -->
+                <div class="col-md-12 mt-3">
+                    <div class="form-floating">
+                        <input type="file" class="form-control" id="fileInput" name="fileToUpload">
+                        <label for="fileInput"><i>Modify Attached File</i></label>
                     </div>
                 </div>
 
                 <!-- Status -->
                 <div class="col-md-12 mt-3">
                     <div class="form-floating">
-                        <select name="status" required class="form-control" id="status">
+                        <select name="status" class="form-control" id="status">
                             <option value="0">Published</option>
                             <option value="1">Hidden</option>
                         </select>

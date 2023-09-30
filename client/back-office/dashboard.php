@@ -4,6 +4,7 @@ include('security/authentication.php');
 include('includes/header.php');
 include('includes/topnav.php');
 include('includes/script.php');
+include('elements/popup/user-profile-popup.php');
 ?>
 
 <head>
@@ -37,7 +38,12 @@ include('includes/script.php');
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        103
+                                        <?php
+                                            $sql = "SELECT COUNT(*) as total_students FROM users WHERE role_as = 2";
+                                            $result = $con->query($sql);
+                                            $row = $result->fetch_assoc();
+                                            echo $row["total_students"];
+                                        ?>
                                     </h2>
                                 </div>
                             </div>
@@ -55,7 +61,12 @@ include('includes/script.php');
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                       50
+                                        <?php
+                                            $sql = "SELECT COUNT(*) as total_students FROM users WHERE role_as = 1";
+                                            $result = $con->query($sql);
+                                            $row = $result->fetch_assoc();
+                                            echo $row["total_students"];
+                                        ?>
                                     </h2>
                                 </div>
                             </div>
@@ -68,12 +79,17 @@ include('includes/script.php');
                         <div class="card-statistic-3 p-4">
                             <div class="card-icon card-icon-large"><i class="fas fa-solid fa-file-pen"></i></div>
                             <div class="mb-4">
-                                <h5 class="card-title mb-0">Assessments</h5>
+                                <h5 class="card-title mb-0">Active Assessments</h5>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        250
+                                        <?php
+                                            $sql = "SELECT COUNT(*) as total_assessments FROM assessment WHERE status = 0";
+                                            $result = $con->query($sql);
+                                            $row = $result->fetch_assoc();
+                                            echo $row["total_assessments"];
+                                        ?>
                                     </h2>
                                 </div>
                             </div>
@@ -222,7 +238,7 @@ include('includes/script.php');
                         <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/>
                     </div>
                     <div class="profile-thumb-block">
-                        <img src="<?php echo $profile_image ? $profile_image : $default_image_url; ?>" alt="profile-image" class="profile"/>
+                        <img src="profileImage/<?php echo $profile_image ? $profile_image : $default_image_url; ?>" alt="profile-image" class="profile"/>
                     </div>
                     <div class="card-content">
                         <h2><?php echo $user['fname'] . ' ' . $user['lname'] . ' ' .$user['suffix']; ?>
@@ -235,10 +251,12 @@ include('includes/script.php');
                             </small>
                         </h2>
                         <div class="icon-block">
-                            <button class="edit-button">View Profile</button>
+                        <button id="profile-show-popup" class="edit-button" data-user-id="<?php echo $_SESSION['auth_user']['user_id']; ?>">Edit Profile</button>
                         </div>
                         <div class="icon-block">
-                            <button class="btn btn-info">Log Out</button>
+                        <form action="backend/logout.php" method="POST" name="logout_form">
+                            <button type="submit" class="btn btn-info">Log Out</button>
+                        </form>
                         </div>
                     </div>
                 </div>

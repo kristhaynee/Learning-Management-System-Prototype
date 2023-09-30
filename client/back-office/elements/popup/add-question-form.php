@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-7">
             <h2 class="">Add Question</h2>
-            <p class="mb-4">Create a new account for Teacher</p>
+            <p class="mb-4">Add a question to the assessment</p>
         </div>
         <div class="col-5 text-end align-middle">
             <button type="button" class="btn btn-secondary add-image">
@@ -70,7 +70,7 @@
                 <div class="row">
                     <label for="image">Image:</label>
                     <div class="col-11">
-                        <input type="file" class="form-control" name="image" id="image">
+                        <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png, .gif">
                     </div>
                     <div class="col-1">
                         <button type="button" class="btn btn-danger remove-input" data-target="image-input">
@@ -84,7 +84,7 @@
                 <div class="row">
                     <label for="video">Video:</label>
                     <div class="col-11">
-                        <input type="file" class="form-control" name="video" id="video">
+                        <input type="file" class="form-control" name="video" id="video" accept=".mp4, .avi, .mov">
                     </div>
                     <div class="col-1">
                         <button type="button" class="btn btn-danger remove-input" data-target="video-input">
@@ -93,6 +93,7 @@
                     </div>
                 </div>
             </div>
+
 
             <br>
             <!-- Buttons (Right Side) -->

@@ -27,7 +27,9 @@ include('elements/popup/edit-user-form.php');
                 <nav class="nav container">
                     <div class="nav custom-tabs" id="nav-tab" role="tablist">
                         <a class="nav-item custom-tabs nav-link active" id="nav-student-tab" data-toggle="tab" href="#nav-student" role="tab" aria-controls="nav-student" aria-selected="true">Student</a>
-                        <a class="nav-item custom-tabs nav-link" id="nav-teacher-tab" data-toggle="tab" href="#nav-teacher" role="tab" aria-controls="nav-teacher" aria-selected="false">Teacher</a>
+                        <?php if ($_SESSION['auth_role'] == '0') :?>
+                            <a class="nav-item custom-tabs nav-link" id="nav-teacher-tab" data-toggle="tab" href="#nav-teacher" role="tab" aria-controls="nav-teacher" aria-selected="false">Teacher</a>
+                        <?php endif; ?>                    
                     </div>
                 </nav>
             </div>
@@ -52,7 +54,7 @@ include('elements/popup/edit-user-form.php');
                 <table id="example1" class="table px-5" style="width:100%">
                     <thead>
                         <tr>
-                            <th><center>Student ID</center></th>
+                            <th><center>Student Code</center></th>
                             <th><center>Full Name</center></th>
                             <th><center>Email</center></th>
                             <th><center>Username</center></th>
@@ -123,6 +125,10 @@ include('elements/popup/edit-user-form.php');
     </style>
 
     <!-- TABLE TEACHER -->
+    <?php
+    // Check if the user is an admin (role_as = 0)
+    if ($_SESSION['auth_role'] == '0') :
+    ?>
     <div class="container mt-3 table-responsive tab-pane fade" role="tabpanel" aria-labelledby="nav-teacher-tab" id="nav-teacher">
     <div class="card" style="margin-bottom: 10rem">
         <div class="card-header">
@@ -190,6 +196,7 @@ include('elements/popup/edit-user-form.php');
         </div>
     </div>
 </div>
+<?php endif; ?>
     <!-- TABLE -->
 </section>
 

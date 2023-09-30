@@ -89,22 +89,41 @@
         </nav>
     </div>
     <script>
-    const navLinksEls = document.querySelectorAll('.nav-link')
-    const windowPathname = window.location.pathname
+    const navLinksEls = document.querySelectorAll('.nav-link');
+    const windowPathname = window.location.pathname;
 
-    const navIconEls = document.querySelectorAll('.nav-icon')
-   
-    navLinksEls.forEach(navlink=>{
-        if(navlink.href.includes(windowPathname))
-        navlink.style.color="#FF9635"
-    })
+    const navIconEls = document.querySelectorAll('.nav-icon');
+
+    navLinksEls.forEach(navlink => {
+        if (windowPathname.includes('assessment.php') || windowPathname.includes('assessment-question.php')) {
+            if (navlink.href.includes('assessment.php')) {
+                navlink.style.color = "#FF9635";
+            } else {
+                navlink.style.color = ""; // Reset the color for other links
+            }
+        } else {
+            if (navlink.href.includes(windowPathname)) {
+                navlink.style.color = "#FF9635";
+            }
+        }
+    });
 
     navIconEls.forEach(navIcon => {
-       if(navIcon.lastChild.previousElementSibling.href.includes(windowPathname)){
-        navIcon.style.color="#FF9635"
-        navIcon.style.borderBottom = "3px solid #FF9635"
-       }
+        const navLink = navIcon.lastChild.previousElementSibling;
+        if (windowPathname.includes('assessment.php') || windowPathname.includes('assessment-question.php')) {
+            if (navLink.href.includes('assessment.php')) {
+                navIcon.style.color = "#FF9635";
+                navIcon.style.borderBottom = "3px solid #FF9635";
+            } else {
+                navIcon.style.color = ""; // Reset the color for other icons
+                navIcon.style.borderBottom = "";
+            }
+        } else {
+            if (navLink.href.includes(windowPathname)) {
+                navIcon.style.color = "#FF9635";
+                navIcon.style.borderBottom = "3px solid #FF9635";
+            }
+        }
     });
-    
     </script>
     </header>

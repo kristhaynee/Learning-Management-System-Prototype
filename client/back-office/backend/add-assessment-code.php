@@ -11,10 +11,33 @@ if (isset($_SESSION['auth_user']['user_id'])) {
         $subjectID = $_POST['subject'];
         $comment = $_POST['comment'];
 
+        // Handle file upload
+        $fileUploaded = false;
+        $targetDirectory = "../assessment-files/";
+        // Check if a file was uploaded
+        if (!empty($_FILES["fileToUpload"]["tmp_name"])) {
+            $uploadedFileName = basename($_FILES["fileToUpload"]["name"]);
+            $targetFile = $uploadedFileName;
+            
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
+                $fileUploaded = true;
+
+                $fileToStoreInDatabase = $uploadedFileName;
+
+            } else {
+                $_SESSION['message'] = "Error uploading the file.";
+                header("Location: ../assessment.php");
+                exit();
+            }
+        }
+
+
+
+
         // Perform data validation here (e.g., checking for empty fields)
 
         // Insert data into the 'assessment' table
-        $sql = "INSERT INTO assessment (assessment_name, subjectID, comment, teacherID) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO assessment (assessment_name, subjectID, comment, teacherID, attach_file) VALUES (?, ?, ?, ?, ?)";
         $stmt = $con->prepare($sql);
 
         if (!$stmt) {
@@ -24,7 +47,7 @@ if (isset($_SESSION['auth_user']['user_id'])) {
             exit();
         } else {
             // Bind parameters
-            $stmt->bind_param("sisi", $assessmentName, $subjectID, $comment, $auth_id);
+            $stmt->bind_param("sisis", $assessmentName, $subjectID, $comment, $auth_id, $targetFile);
 
             if ($stmt->execute()) {
                 // Get the last inserted ID

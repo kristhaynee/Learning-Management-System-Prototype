@@ -1,4 +1,6 @@
 <?php
+include('./././security/authentication.php');
+
 include('includes/header.php');
 include('includes/topnav.php');
 include('includes/script.php');
@@ -9,91 +11,78 @@ include('includes/script.php');
 </head>
 
 <section class="content">
-
     <div class="container mt-1 mb-1">
-       
-
-            <div class="mb-5 col-8">
-                <p class="page-name fw-bold"><span class="border-bottom  border-warning">Stud</span>ent Reports</p>
+        <?php include('elements/message.php')?>
+            <div class="ml-5">
+                <p class="page-name">Student Reports</p>
             </div>
-
-        
     </div>
 
-    <!-- TABLE STUDENT -->
+    <style>
+            .dataTables_wrapper .dataTables_length {
+                margin-left: 3rem !important;
+                margin-top: 2rem !important;
+            }
+            div.dataTables_wrapper 
+            div.dataTables_length select {
+                width: 5rem !important;
+            }
+
+            div.dt-buttons>.dt-button{
+                background-color: white !important;
+                margin-bottom: 2rem !important;
+            }
+
+            div.dataTables_wrapper div.dataTables_info {
+                margin-left: 3rem !important;
+            }
+        </style>
+
     <div class="container mt-3 table-responsive tab-pane fade show active" role="tabpanel" aria-labelledby="nav-student-tab" id="nav-student">
-        <div class="card">
+    <div class="card" style="margin-bottom: 10rem">
             <div class="card-body m-5 pt-4 px-3">
+            <?php
+                $query = "SELECT r.studentID, r.assessmentID, r.score, r.date_answered, a.assessment_name, u.fname, u.lname, u.suffix, u.userCode
+                FROM studentresponse r
+                LEFT JOIN assessment a ON r.assessmentID = a.assessment_id
+                LEFT JOIN users u ON r.studentID = u.user_id WHERE role_as='2'";
+                $query_run = mysqli_query($con, $query);
+
+                if (mysqli_num_rows($query_run) > 0) {
+                ?>
                 <table id="example1" class="table pt-3 px-5" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Student ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Section</th>
-                            <th>Final Grade</th>
-                            <th class="text-center">Action</th>
+                            <th><center>Student Code</center></th>
+                            <th><center>Name</center></th>
+                            <th><center>Assessment Name</center></th>
+                            <th><center>Score</center></th>
                         </tr>
                     </thead>
                     <tbody>
+                    <?php
+                        foreach ($query_run as $row) {
+                        ?>
                         <tr>
-                            <td>stud123</td>
-                            <td>Tiger Nixon</td>
-                            <td>john_fernando@gmail.com</td>
-                            <td>4M-G1</td>
-                            <td>1.50</td>
-                            <td ><button class="btn text-primary">View Details</button></td>
+                            <td><?= $row['userCode']; ?></td>
+                            <td><?= $row['fname'] . " " . $row['lname'] . " " . $row['suffix']; ?></td>
+                            <td><?= $row['assessment_name']; ?></td>
+                            <td><?= $row['score']; ?></td>
                         </tr>
-                        <tr>
-                            <td>stud124</td>
-                            <td>Krizzia Marie Cruz</td>
-                            <td>k_marie@gmail.com</td>
-                            <td>4M-G1</td>
-                            <td>1.25</td>
-                             <td ><button class="btn text-primary">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>stud125</td>
-                            <td>Andrea Cordoje</td>
-                            <td>andy_c@gmail.com</td>
-                            <td>4M-G1</td>
-                            <td>1.75</td>
-                             <td ><button class="btn text-primary">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>stud126</td>
-                            <td>Martin Loui Cruz</td>
-                            <td>martinL_cruz@gmail.com</td>
-                            <td>4M-G2</td>
-                            <td>1</td>
-                             <td ><button class="btn text-primary">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>stud127</td>
-                            <td>Missy Angela Carlos</td>
-                            <td>missyAC@gmail.com</td>
-                            <td>4M-G2</td>
-                            <td>1.2</td>
-                             <td ><button class="btn text-primary">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>stud128</td>
-                            <td>Raven Quambao</td>
-                            <td>ravenQ@gmailcom</td>
-                            <td>4M-G2</td>
-                            <td>1.75</td>
-                             <td ><button class="btn text-primary">View Details</button></td>
-                        </tr>
-                        <tr>
-                            <td>stud129</td>
-                            <td>Luidel Garcia</td>
-                            <td>Luidel@gmail.com</td>
-                            <td>4M-G2</td>
-                            <td>2.0</td>
-                             <td ><button class="btn text-primary">View Details</button></td>
-                        </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
+                <?php
+                } else {
+                ?>
+                <div class="text-center">
+                    No Record Found
+                </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>

@@ -111,11 +111,11 @@
                                 <div class="d-flex align-items-center">
                                     <span>My Profile</span>';
 
-                          if (!empty($profile_img)) {
-                              echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
-                          } else {
-                              echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
-                          }
+                          // if (!empty($profile_img)) {
+                          //     echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
+                          // } else {
+                          //     echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
+                          // }
                           echo '</div></a>
                           <ul class="dropdown-menu dropdown-menu-right fixed-width">
                                 <li class="dropdown-header">
@@ -134,13 +134,18 @@
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="standby.php">User Hub</a></li>
-                                <li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>
-                                <li>
+                                </li>';
+                                  echo '<li><a class="dropdown-item" href="standby.php">User Hub</a></li>';
+                                
+                                if ($_SESSION['auth_role'] === 0 || 1) {
+                                echo '<li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>';
+                                }
+                                echo '<li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
+                                <form action="backend/logout.php" method="POST" name="logout_form">
+                                    <button style="border: none;background-color: white;"><a class="dropdown-item">Logout</a></button>
+                                </form>
                             </ul>
                         </li>
                     ';

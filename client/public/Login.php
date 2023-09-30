@@ -21,7 +21,7 @@ include('includesClient/header.php');
               Log in to Navigate PISA's World of Education Excellence.
             </p>
            <div class="imgContainer">
-            <img src="../images/login-img.png" class="login-img" alt="">
+            <img src="../assets/images/login-img.png" class="login-img" alt="">
            </div>
           </div>
 

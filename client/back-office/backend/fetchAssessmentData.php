@@ -5,11 +5,11 @@ include('../security/authentication.php');
 
 if (isset($_GET['assessment_id'])) {
     $assessment_id = $_GET['assessment_id'];
-    
-    // Perform a database query to fetch user data based on $user_id
-    $query = "SELECT a.assessment_id, a.assessmentCode, a.assessment_name, a.comment, a.subjectID, s.subject_name, u.fname, u.lname, u.suffix, a.status FROM assessment a
+    // Perform a database query to fetch assessment data based on $assessment_id
+    $query = "SELECT a.assessment_id, a.assessmentCode, a.assessment_name, a.comment, a.subjectID, s.subject_name, u.fname, u.lname, u.suffix, a.status, a.attach_file FROM assessment a
                 LEFT JOIN subject s ON a.subjectID = s.subject_id
-                LEFT JOIN users u ON a.teacherID = u.user_id";
+                LEFT JOIN users u ON a.teacherID = u.user_id
+                WHERE a.assessment_id = $assessment_id";
     $result = mysqli_query($con, $query);
     
     if ($result) {
@@ -21,6 +21,6 @@ if (isset($_GET['assessment_id'])) {
     }
 } else {
     // Handle missing assessment_id parameter
-    echo json_encode(['error' => 'User ID not provided']);
+    echo json_encode(['error' => 'Assessment ID not provided']);
 }
 ?>

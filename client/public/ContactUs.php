@@ -32,34 +32,34 @@ include('includesClient/header.php');
         <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3 contactUs"> <span class="bottom-border">Contact </span> Us</h1>
         <p class="col-lg-10 fs-4 mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, dignissimos iusto. Aperiam expedita architecto ad perspiciatis iste nobis quasi enim.</p>
         <div class="my-3">
-          <img src="../images/geo-alt-fill.svg"><span> 123 Fifth Avenue, New York, NY 10160</span>
+          <img src="../assets/images/geo-alt-fill.svg" style="width: 20px;margin-right: 2rem;"><span> 123 Fifth Avenue, New York, NY 10160</span>
         </div>
         <div class="my-3">
-          <img src="../images/envelope-fill.svg"><span> contact@info.com</span>
+          <img src="../assets/images/envelope-fill.svg" style="width: 20px;margin-right: 2rem;"><span> contact@info.com</span>
         </div>
         <div class="my-3">
-          <img src="../images/telephone-fill.svg"><span> 929-242-6868</span>
+          <img src="../assets/images/telephone-fill.svg" style="width: 20px;margin-right: 2rem;"><span> 929-242-6868</span>
         </div>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <form onsubmit="sendEmail(); reset(); return false;" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
           <h3 class="my-2">Have Questions?</h3>
           <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="text" id="name" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="email" id="email" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Email Address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="text" id="subject" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Subject</label>
           </div>
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Your message</label>
+            <textarea id="message" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">How can we help you?</label>
           </div>
           <button class="rounded-pill w-50 btn btn-lg btn-secondary-color text-white mt-5" type="submit">Send Message</button>
         </form>
@@ -127,5 +127,23 @@ include('includesClient/header.php');
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
       ></script>
+
+      <script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  function sendEmail() {
+    Email.send({
+      Host: "smtp.elasticemail.com",
+      Username: "jp.parkjongseong@gmail.com",
+      Password: "6E897D2CB8770F1F8A423CE50955035F59B1",
+      To: 'jp.parkjongseong@gmail.com',
+      From: document.getElementById("email").value,
+      Subject: document.getElementById("subject").value,
+      Body: "And this is the body"
+    }).then(
+      message => alert(message)
+    );
+  }
+</script>
+
   </body>
   </html>
