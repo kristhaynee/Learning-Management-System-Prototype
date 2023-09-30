@@ -21,9 +21,9 @@
       padding: 0.5rem !important;
       display: flex !important;
       align-items: center !important;
-      border-top: 1px solid #DEE2E6;    /* Add border to the top */
-      border-right: 1px solid #DEE2E6;  /* Add border to the right */
-      border-bottom: 1px solid #DEE2E6; /* Add border to the bottom */
+      border-top: 1px solid #DEE2E6;
+      border-right: 1px solid #DEE2E6;
+      border-bottom: 1px solid #DEE2E6; 
       border-radius: 0 5px 5px 0;
     }
 
@@ -97,7 +97,7 @@
                   <a class="nav-link text-white px-3" href="ContactUs.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
+                  <a class="nav-link text-white px-3" href="faqs.php">FAQs</a>
                 </li>
                 <?php
                 // Check if the user is authenticated using the 'auth' session variable
@@ -180,7 +180,7 @@
                 header.classList.add('contactUs-header')
               }
               
-              if(navlink.href.includes('FAQs.php')){
+              if(navlink.href.includes('faqs.php')){
                 header.classList.add('faqs-header')
               }
               
