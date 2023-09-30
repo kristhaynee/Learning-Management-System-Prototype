@@ -1,4 +1,4 @@
 <?php
-header("Location: https://virtualshrine.online/Website/homepage.php");
+header("Location: /client/public/Homepage.php");
 exit();
 ?>
