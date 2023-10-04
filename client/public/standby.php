@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['auth_user']['user_id'])) {
+    $_SESSION['message'] = "You have to Login to access this page!";
+    header('Location: Login.php');
+    exit();
+}
+
 include('includesClient/header.php');
 ?>
 

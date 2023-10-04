@@ -119,10 +119,23 @@ include('../config/dbcon.php');
             <div class="col-6 d-flex justify-content-center" id="attachment-container">
                 <?php
                 if (!empty($attach_file)) {
-                    echo '<img src="../back-office/assessment-files/' . $attach_file . '" alt="Attachment" style="max-width: 100%;">';
+                    $file_extension = pathinfo($attach_file, PATHINFO_EXTENSION);
+
+                    // Check the file extension to determine the file type
+                    if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif'])) {
+                        // Display an image if the file type is an image
+                        echo '<img src="../back-office/assessment-files/' . $attach_file . '" alt="Attachment" style="max-width: 100%;">';
+                    } elseif (in_array($file_extension, ['mp4', 'avi', 'mov', 'mkv'])) {
+                        // Display a video if the file type is a video
+                        echo '<video src="../back-office/assessment-files/' . rawurldecode($attach_file) . '" controls style="max-width: 100%;"></video>';
+                    } else {
+                        // Handle other file types or provide a message for unsupported types
+                        echo 'Unsupported file type';
+                    }
                 }
                 ?>
             </div>
+
         </div>
     </div>
 

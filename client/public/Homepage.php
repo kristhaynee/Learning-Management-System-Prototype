@@ -42,107 +42,34 @@ include('includesClient/header.php');
             </p>
         </div>
         <div class="button-container-div ">
-            <button type="button" class="btn-assessment">
+            <a type="button" href="AboutUs.php" class="btn-assessment">
                 <span>Learn More</span>
-            </button>
+            </a>
         </div>
     </section>
 
     <section class="container my-5 ">
-    <div class="row g-lg-3 py-4 trans-delay-3 scroll-hidden"> <!-- Reduced the gutter between columns using g-lg-3 -->
-        <div class="col-sm-3 text-center">
-            <h3 class="display-4 fw-bold lh-1 mt-3 mb-3 home-sect-two"> 
-                PISA Test Assessment
-            </h3>
-        </div>
-        
-        <div class="col-md-7 d-flex align-items-center">
-        <div class="vr"></div>
-            <p class="lead fw-regular text-middle fw-medium"> 
-                Explore and access comprehensive information about PISA (Programme for International Student Assessment) test assessments in this section.
-            </p>
-        </div>
-        <div class="col-2 d-flex align-items-center">
-            <a type="button" class="btn-assessment text-middle" href="testAssessment.php">
-                <span>View All</span>
-            </a>
-        </div>
-    </div>
-
-    <section class="wrapper">
-    <!-- <div class="container-fostrap">
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card trans-delay-1 scroll-slide-hidden">
-                            <a class="img-card" href="#">
-                            <img src="../assets/images/assessment 1.jpg" />
-                          </a>
-                            <div class="card-content px-4">
-                                <h4 class="card-title">
-                                    <a href="#"> Lorem ipsum dolor varius vel pharetra
-                                  </a>
-                                </h4>
-                                <p class="text-truncate">
-                                    Arcu bibendum at varius vel pharetra vel turpis nunc
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="#" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card trans-delay-2 scroll-slide-hidden">
-                            <a class="img-card" href="#">
-                            <img src="../assets/images/assessment 2.jpg" />
-                          </a>
-                          <div class="card-content px-4">
-                                <h4 class="card-title">
-                                    <a href="#"> Diam vulputate ut pharetra sit
-                                  </a>
-                                </h4>
-                                <p class="text-truncate">
-                                    Turpis massa sed elementum tempus.
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="#" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card trans-delay-3 scroll-slide-hidden">
-                            <a class="img-card" href="#">
-                            <img src="../assets/images/assessment 3.jpg" />
-                          </a>
-                          <div class="card-content px-4">
-                                <h4 class="card-title">
-                                    <a href="#">Odio euismod lacinia at quis
-                                  </a>
-                                </h4>
-                                <p class="text-truncate">
-                                    Commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Amet est placerat in egestas erat imperdiet
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="#" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="row g-lg-3 py-4 trans-delay-3 scroll-hidden"> <!-- Reduced the gutter between columns using g-lg-3 -->
+            <div class="col-sm-3 text-center">
+                <h3 class="display-4 fw-bold lh-1 mt-3 mb-3 home-sect-two"> 
+                    PISA Test Assessment
+                </h3>
+            </div>
+            
+            <div class="col-md-7 d-flex align-items-center">
+            <div class="vr"></div>
+                <p class="lead fw-regular text-middle fw-medium"> 
+                    Explore and access comprehensive information about PISA (Programme for International Student Assessment) test assessments in this section.
+                </p>
+            </div>
+            <div class="col-2 d-flex align-items-center">
+                <a type="button" class="btn-assessment text-middle" href="testAssessment.php">
+                    <span>View All</span>
+                </a>
             </div>
         </div>
-    </div> -->
-</section>
-</section>
+
+    </section>
 
 <!-- Footer -->
 <section class="gradient-background">

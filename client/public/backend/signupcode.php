@@ -1,62 +1,66 @@
 <?php
-include('../security/authentication.php');
+include('../../config/dbcon.php');
 
-// UPDATE ASISTANT ADMIN INFORMATION
-if (isset($_POST['update_user_info'])) {
-    $user_id = $_POST['user_id'];
-    $firstname = $_POST['fname'];
-    $lastname = $_POST['lname'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $status = $_POST['status'] == true ? '0' : '1';
+if(isset($_POST['student_signup']))
+{
+    $email = mysqli_real_escape_string($con, $_POST['email']);
 
-    // Check if the username already exists for a different user
-    $checkUsernameQuery = "SELECT * FROM users WHERE username='$username' AND id!='$user_id'";
-    $checkUsernameResult = mysqli_query($con, $checkUsernameQuery);
+    $firstname = mysqli_real_escape_string($con, $_POST['fname']);
+    $lower_fname = strtolower($firstname);
+    $final_firstname = ucwords($lower_fname);
+    $fname = $final_firstname;
+        
+    $lastname = mysqli_real_escape_string($con, $_POST['lname']);
+    $lower_lname = strtolower($lastname);
+    $final_lastname = ucwords($lower_lname);
+    $lname = $final_lastname;
 
-    // Check if the email already exists for a different user
-    $checkEmailQuery = "SELECT * FROM users WHERE email='$email' AND id!='$user_id'";
-    $checkEmailResult = mysqli_query($con, $checkEmailQuery);
+    $suffix = mysqli_real_escape_string($con, $_POST['suffix']);
 
-    if (mysqli_num_rows($checkUsernameResult) > 0) {
-        // Username already exists for another user
-        $_SESSION['message'] = "Username already exists for another user";
-        header('Location: assistant-admin-edit.php?id=' . $user_id);
-        exit(0);
-    } elseif (mysqli_num_rows($checkEmailResult) > 0) {
-        // Email already exists for another user
-        $_SESSION['message'] = "Email already exists for another user";
-        header('Location: assistant-admin-edit.php?id=' . $user_id);
-        exit(0);
-    } else {
-        $query = "UPDATE users SET fname='$firstname', lname='$lastname', username='$username', email='$email', password='$password', status='$status'
-                    WHERE role_as=1 AND ID='$user_id' ";
+    $username = mysqli_real_escape_string($con, $_POST['username']);
 
-        $query_run = mysqli_query($con, $query);
+    $role_as = 2;
 
-        if ($query_run) {
-            $sql = "INSERT INTO auditlog (id, username, action) VALUES (NULL, '" . $_SESSION['auth_user']['user_name'] . "', 'Updated an Admin Information')";
-            $sql_run = mysqli_query($con, $sql);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+    $confirmpassword = mysqli_real_escape_string($con, $_POST['confirmpassword']);
 
-            if ($sql_run) {
-                $_SESSION['message'] = "Updated Successfully";
-                header('Location: assistant-admin-edit.php?id=' . $user_id);
-                exit(0);
-            } else {
+    // Check if password and confirm password match
+    if ($password !== $confirmpassword) {
+        $_SESSION['message'] = "Password and Confirm Password do not match!";
+        header("Location: ./Signup.php");
+        exit();
+    }
+
+    $user_query = "INSERT INTO users (email, fname, lname, suffix, username, role_as, password) VALUES ('$email', '$fname', '$lname', '$suffix', '$username', '$role_as', '$password')";
+    $user_query_run = mysqli_query($con, $user_query);
+
+    if($user_query_run)
+    {
+        $last_id = mysqli_insert_id($con);
+        if ($last_id){
+            $code = rand(1,99999);
+            $userCode = "S".$code."_".$last_id;
+            $query = "UPDATE users SET userCode = '".$userCode."' WHERE user_id = '".$last_id."'";
+            $res = mysqli_query($con, $query);
+
+            if ($res)
+            {
+                $_SESSION['message'] = "Registered Successfully!";
+                header("Location: ../Login.php");
+                exit();
+            }
+            else
+            {
                 $_SESSION['message'] = "Something Went Wrong!";
-                header('Location: assistant-admin-edit.php?id=' . $user_id);
+                header("Location: ./Signup.php");
                 exit(0);
             }
-        } else {
-            $_SESSION['message'] = "Something Went Wrong!";
-            header('Location: assistant-admin-edit.php?id=' . $user_id);
-            exit(0);
         }
     }
-} else {
-    $_SESSION['message'] = "Password does not match";
-    header('Location: assistant-admin-edit.php?id=' . $user_id);
-    exit(0);
+    else {
+        $_SESSION['message'] = "Error: " . mysqli_error($con);
+        header("Location: ./Signup.php");
+        exit();
+    }
 }
 ?>

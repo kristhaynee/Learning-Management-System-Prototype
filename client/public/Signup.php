@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+if (isset($_SESSION['auth_user']['user_id'])) {
+  header('Location: Homepage.php');
+  exit();
+}
+
+include('includesClient/header.php');
 ?>
 
 <!DOCTYPE html>

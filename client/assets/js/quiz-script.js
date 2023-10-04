@@ -89,8 +89,22 @@ function quizDisplay(questionCount) {
             card.classList.add("hide");
         });
 
-        // Display current question card
-        quizCards[questionCount].classList.remove("hide");
+        // Check the attachedFile property and create either a video or an image element
+        if (currentAssessment.attachedFile) {
+            let attachedFileElement;
+            if (currentAssessment.attachedFile.type === "video") {
+                attachedFileElement = document.createElement("video");
+                attachedFileElement.src = currentAssessment.attachedFile.url;
+                attachedFileElement.controls = true;
+            } else if (currentAssessment.attachedFile.type === "image") {
+                attachedFileElement = document.createElement("img");
+                attachedFileElement.src = currentAssessment.attachedFile.url;
+                attachedFileElement.alt = "Image";
+            }
+
+        // Append the attached file element to the quiz card
+        quizCards[questionCount].appendChild(attachedFileElement);
+        }
     } else {
         console.error('Invalid questionCount:', questionCount);
     }

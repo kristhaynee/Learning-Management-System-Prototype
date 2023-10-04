@@ -2,6 +2,11 @@
 session_start();
 include('../../config/dbcon.php');
 
+if (isset($_SESSION['auth_user']['user_id'])) {
+    header('Location: ./login.php');
+    exit();
+  }
+
 if (isset($_GET['search'])) {
     $keyword = '%' . $_GET['keyword'] . '%';
     $subjectFilter = $_GET['subject_filter'];
@@ -58,17 +63,27 @@ if (isset($_GET['search'])) {
         while ($assessment = mysqli_fetch_assoc($result)) {
             $html .= '<div class="card w-100 p-4 custom-border">';
             $html .= '<div class="d-flex">';
-            $html .= '<div class="col-md-8">';
+            $html .= '<div class="col-9">';
             $html .= '<h5 class="card-title assessment-title-custom">' . $assessment['assessment_name'] . '</h5>';
             $html .= '<p class="card-text"><span>Posted by </span><strong>' . $assessment['fname'] . ' ' . $assessment['lname'] . ' ' . $assessment['suffix'] . '</strong></p>';
             $html .= '</div>';
-            $html .= '<div class="col-md-3 align-items-center justify-content-center">';
-            $html .= '<a type="button" class="btn-takeAssessment text-middle" href="takeAssessment.php" >';
-            $html .= '<span>Take Assessment</span>';
-            $html .= '</a>';
+            // Check if the user is authenticated (logged in)
+            if (isset($_SESSION['auth_user']['user_id'])) {
+                $html .= '<div class="col-3 align-items-center justify-content-center">';
+                $html .= '<a type="button" class="btn-takeAssessment text-middle" href="takeAssessment.php?assessment_id=' . $assessment['assessment_id'] . '">';
+                $html .= '<span>Take Assessment</span>';
+                $html .= '</a>';
+            } else {
+                // If not authenticated, provide a link to the login page
+                $html .= '<div class="col-3 d-flex align-items-center justify-content-center">';
+                $html .= '<a type="button" class="btn btn-primary text-middle" href="Login.php">';
+                $html .= '<span>Login to take Assessment</span>';
+                $html .= '</a>';
+            }
             $html .= '</div>';
             $html .= '</div>';
             $html .= '</div>';
+            
         }
     } else {
         $html = 'No assessments found.'; // Display a message if no assessments are found

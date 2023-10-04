@@ -14,16 +14,15 @@ if (isset($_SESSION['auth_user']['user_id'])) {
         // Handle file upload
         $fileUploaded = false;
         $targetDirectory = "../assessment-files/";
+
         // Check if a file was uploaded
         if (!empty($_FILES["fileToUpload"]["tmp_name"])) {
             $uploadedFileName = basename($_FILES["fileToUpload"]["name"]);
-            $targetFile = $uploadedFileName;
-            
+            $targetFile = $targetDirectory . $uploadedFileName; // Concatenate the directory path with the file name
+
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
                 $fileUploaded = true;
-
-                $fileToStoreInDatabase = $uploadedFileName;
-
+                $fileToStoreInDatabase = $uploadedFileName; // Store only the file name in the database
             } else {
                 $_SESSION['message'] = "Error uploading the file.";
                 header("Location: ../assessment.php");
@@ -31,10 +30,6 @@ if (isset($_SESSION['auth_user']['user_id'])) {
             }
         }
 
-
-
-
-        // Perform data validation here (e.g., checking for empty fields)
 
         // Insert data into the 'assessment' table
         $sql = "INSERT INTO assessment (assessment_name, subjectID, comment, teacherID, attach_file) VALUES (?, ?, ?, ?, ?)";

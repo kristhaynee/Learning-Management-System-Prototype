@@ -100,7 +100,7 @@ include('../config/dbcon.php');
                   <a class="nav-link text-white px-3" href="ContactUs.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white px-3" href="FAQs.php">FAQs</a>
+                  <a class="nav-link text-white px-3" href="faqs.php">FAQs</a>
                 </li>
                 <?php
                 // Check if the user is authenticated using the 'auth' session variable
@@ -114,11 +114,11 @@ include('../config/dbcon.php');
                                 <div class="d-flex align-items-center">
                                     <span>My Profile</span>';
 
-                          if (!empty($profile_img)) {
-                              echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
-                          } else {
-                              echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
-                          }
+                          // if (!empty($profile_img)) {
+                          //     echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
+                          // } else {
+                          //     echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
+                          // }
                           echo '</div></a>
                           <ul class="dropdown-menu dropdown-menu-right fixed-width">
                                 <li class="dropdown-header">
@@ -137,13 +137,18 @@ include('../config/dbcon.php');
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="standby.php">User Hub</a></li>
-                                <li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>
-                                <li>
+                                </li>';
+                                  echo '<li><a class="dropdown-item" href="standby.php">User Hub</a></li>';
+                                
+                                if ($_SESSION['auth_role'] === 0 || 1) {
+                                echo '<li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>';
+                                }
+                                echo '<li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="Logout.php">Logout</a></li>
+                                <form action="backend/logout.php" method="POST" name="logout_form">
+                                    <button style="border: none;background-color: white;"><a class="dropdown-item">Logout</a></button>
+                                </form>
                             </ul>
                         </li>
                     ';
@@ -229,8 +234,7 @@ include('../config/dbcon.php');
         <!-- Results here -->
     </div>
 </section>
-
-    <!-- assessment list -->
+<!-- Assessment List -->
 
 <!-- EndPage Contents -->
 
@@ -297,7 +301,6 @@ include('../config/dbcon.php');
 
       <script>
         document.addEventListener("DOMContentLoaded", function() {
-          // Function to load all assessments when the page loads
           function loadAllAssessments() {
               fetch("backend/fetchAllAssessments.php")
                   .then(response => response.text())
@@ -310,19 +313,16 @@ include('../config/dbcon.php');
                   });
           }
 
-          // Load all assessments when the page loads
           loadAllAssessments();
 
           const searchForm = document.querySelector("#search-form");
           const resetButton = document.querySelector("#reset-button");
 
           searchForm.addEventListener("submit", function(event) {
-              event.preventDefault(); // Prevent the form from submitting traditionally
+              event.preventDefault();
 
-              // Serialize the form data
               const formData = new FormData(searchForm);
 
-              // Make an AJAX request to fetch results
               fetch("backend/fetchAssessmentDataPublic.php?" + new URLSearchParams(formData).toString())
               .then(response => response.text())
               .then(data => {
@@ -334,9 +334,8 @@ include('../config/dbcon.php');
               });
           });
 
-          // Event listener for the reset button
           resetButton.addEventListener("click", function() {
-              loadAllAssessments(); // Load all assessments when reset is clicked
+              loadAllAssessments();
           });
       });
       </script>
