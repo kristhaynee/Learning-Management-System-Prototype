@@ -230,7 +230,7 @@ include('elements/popup/user-profile-popup.php');
             if(mysqli_num_rows($user_run) > 0) {
                 $user = mysqli_fetch_assoc($user_run);
                 $profile_image = $user['profile_img']; // Assuming 'profile_image' is the column name for the user's profile image in the database
-                $default_image_url = '../assets/images/profile_pic/default-profile-icon.jpg'; // Replace with the URL of your default image
+                $default_image_url = 'default-profile-icon.jpg';
                 ?>
                 <div class="card profile-card-3 ">
                     <!-- Profile Card Content -->

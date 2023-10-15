@@ -68,7 +68,7 @@
                     if (mysqli_num_rows($user_run) > 0) {
                         $user = mysqli_fetch_assoc($user_run);
                         $profile_image = $user['profile_img'];
-                        $default_image_url = '../assets/images/profile_pic/default-profile-icon.jpg'; // Replace with the URL of your default image
+                        $default_image_url = './profile_pic/default-profile-icon.jpg'; // Replace with the URL of your default image
                         ?>
                         <div class="p-2 d-flex justify-content-center">
                             <div class="profile-picture d-flex justify-content-center">
