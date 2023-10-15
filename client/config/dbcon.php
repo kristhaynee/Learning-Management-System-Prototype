@@ -1,13 +1,16 @@
 <?php
-$host = "localhost";
+$servername = "localhost";
 $username = "u741634386_PIproto";
 $password = "L9k9g#/#pb&";
 $database = "u741634386_lms_prototype";
 
-$con = mysqli_connect($host, $username, $password, $database);
-
+$con = mysqli_connect($servername, $username, $password, $database);
+ 
 if (!$con) {
-    header ("Location: ../errors/dberror.php");
-    die();}
-
+ 
+    die("Connection failed: " . mysqli_connect_error());
+ 
+}
+echo "Connected successfully";
+mysqli_close($conn);
 ?>
