@@ -6,14 +6,14 @@
             <h2 class="">Add Question</h2>
             <p class="mb-4">Add a question to the assessment</p>
         </div>
-        <div class="col-5 text-end align-middle">
+        <!-- <div class="col-5 text-end align-middle">
             <button type="button" class="btn btn-secondary add-image">
                 <i class="fa-regular fa-file-image"></i>
             </button>
             <button type="button" class="btn btn-secondary add-video">
                 <i class="fa-solid fa-file-video"></i>
             </button>
-        </div>
+        </div> -->
     </div>
         
 
