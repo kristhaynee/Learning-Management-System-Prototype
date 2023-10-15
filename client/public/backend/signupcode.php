@@ -1,5 +1,5 @@
 <?php
-include('../../config/dbcon.php');
+include('dbcon.php');
 
 if(isset($_POST['student_signup']))
 {
