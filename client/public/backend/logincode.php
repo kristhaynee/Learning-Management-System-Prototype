@@ -7,16 +7,18 @@ if(isset($_POST['login_btn']))
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
-    $login_query = "SELECT * FROM users WHERE BINARY email=? AND BINARY password=? LIMIT 1";
+    $login_query = "SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1";
     $stmt = mysqli_prepare($con, $login_query);
-
-    if ($stmt) {
+    
+    if($stmt) {
         mysqli_stmt_bind_param($stmt, "ss", $email, $password);
         mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        $login_query_run = mysqli_stmt_get_result($stmt);
 
-        if ($data = mysqli_fetch_assoc($result))
+        if(mysqli_num_rows($login_query_run) > 0)
         {
+            $data = mysqli_fetch_assoc($login_query_run);
+            
             $user_id = $data['user_id'];
             $email = $data['email'];
             $role_as = $data['role_as'];
@@ -40,18 +42,17 @@ if(isset($_POST['login_btn']))
                 'profile_img' => $profile_img,
                 'role_as' => $role_as,
             ];
-
             print_r($_SESSION['auth_user']);
 
             if($role_as == '0') // Head Admin
             {
-                $_SESSION['message'] = "Welcome to Admin dashboard $fname";
+                $_SESSION['message'] = "Welcome to Admin dashboard"." ".$fname;
                 header("Location: ../../back-office/dashboard.php?user_id=" . $_SESSION['auth_user']['user_id']);
                 exit(0);
             }
             elseif($role_as == '1') // Teacher
             {
-                $_SESSION['message'] = "Welcome to the dashboard $fname";
+                $_SESSION['message'] = "Welcome to the dashboard"." ".$fname;
                 header("Location: ../../back-office/dashboard.php?user_id=" . $_SESSION['auth_user']['user_id']);
                 exit(0);
             }
@@ -67,12 +68,10 @@ if(isset($_POST['login_btn']))
             header("Location: ../Login.php");
             exit(0);
         }
-
-        mysqli_stmt_close($stmt);
     }
     else
     {
-        echo "Error in the prepared statement.";
+        echo "Error preparing the statement: " . mysqli_error($con);
     }
 }
 ?>
