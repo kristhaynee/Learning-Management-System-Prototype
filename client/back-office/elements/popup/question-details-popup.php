@@ -72,7 +72,7 @@
                     <hr>
 
                     <div class="d-flex justify-content-center align-items-end">
-                        <button class="btn btn-primary" style="width:100px;margin-right: 0.5rem;">Edit</button>
+                        <!-- <button class="btn btn-primary" style="width:100px;margin-right: 0.5rem;">Edit</button> -->
                         <button class="btn btn-danger" style="width:100px">Delete</button>
                     </div>
 
