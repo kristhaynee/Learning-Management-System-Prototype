@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('dbcon.php');
+include('../../config/dbcon.php');
 
 if(isset($_POST['login_btn']))
 {
