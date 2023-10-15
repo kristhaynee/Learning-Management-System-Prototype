@@ -138,7 +138,7 @@
                                   echo '<li><a class="dropdown-item" href="standby.php">User Hub</a></li>';
                                 
                                 if ($_SESSION['auth_role'] === 0 || 1) {
-                                echo '<li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>';
+                                  echo '<li><a class="dropdown-item" href="../back-office/dashboard.php?user_id=' . $_SESSION['auth_user']['user_id'] . '">Dashboard</a></li>';
                                 }
                                 echo '<li>
                                     <hr class="dropdown-divider">
