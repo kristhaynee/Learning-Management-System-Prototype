@@ -1023,32 +1023,34 @@
 
     <!-- Assessment Question Page // Delete a question -->
     <script>
-    function deleteQuestion(questionId) {
-        if (confirm("Are you sure you want to delete this question?")) {
-            // Send an AJAX request to delete the question on the server
-            // You can use JavaScript/jQuery to send the request, or use other methods like fetch or Axios
-            // Here's a basic example using jQuery's AJAX:
-
-            $.ajax({
-                url: '././backend/delete-question.php', // Replace with the URL of your delete question script
-                type: 'POST',
-                data: { questionId: questionId },
-                success: function(response) {
-                    // Handle the success response here, e.g., remove the deleted question from the UI
-                    if (response === 'success') {
-                        alert('Question deleted successfully.');
-                        location.reload(); // Reload the page to reflect changes
-                    } else {
-                        alert('Failed to delete the question.');
-                    }
-                },
-                error: function() {
-                    alert('Error occurred while deleting the question.');
-                }
+        $(document).ready(function () {
+            $("#question-details-popup").on("click", ".btn-danger", function () {
+                var questionId = $("#question_id").val();
+                deleteQuestion(questionId);
             });
-        }
-    }
-</script>
+
+            function deleteQuestion(questionId) {
+                if (confirm("Are you sure you want to delete this question?")) {
+                    $.ajax({
+                        url: '././backend/delete-question.php',
+                        type: 'POST',
+                        data: { questionId: questionId },
+                        success: function (response) {
+                            if (response === 'success') {
+                                alert('Question deleted successfully.');
+                                location.reload();
+                            } else {
+                                alert('Failed to delete the question.');
+                            }
+                        },
+                        error: function () {
+                            alert('Error occurred while deleting the question.');
+                        }
+                    });
+                }
+            }
+        });
+    </script>
     <!-- Assessment Question Page // Delete a question -->
 
     <!---------------------------------------- QUIZ MAKER PART ---------------------------------------->
