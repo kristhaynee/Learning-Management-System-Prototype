@@ -229,7 +229,7 @@ include('includesClient/header.php');
                     </div>
 
                     <div class="ag-courses_item">
-                    <a href="FAQs.php" class="ag-courses-item_link">
+                    <a href="faqs.php" class="ag-courses-item_link">
                         <div class="ag-courses-item_bg"></div>
 
                         <div class="ag-courses-item_title">
