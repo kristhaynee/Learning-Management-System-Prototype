@@ -16,6 +16,10 @@ include('elements/popup/edit-user-form.php');
 
     <div class="container mt-1 mb-1">
     <?php include('elements/message.php')?>
+    <div id="archive-success-alert" class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
+        <strong>Hey!</strong> The User was archived successfully. This message will close in <span id="countdown">3</span> seconds.
+    </div>
+
         <div class="ml-5">
             <p class="page-name">Manage Users</p>
         </div>
@@ -46,7 +50,7 @@ include('elements/popup/edit-user-form.php');
 
             <div class="card-body mx-5 mb-5 pb-5 px-3">
                 <?php
-                $query = "SELECT * FROM users WHERE role_as='2'";
+                $query = "SELECT * FROM users WHERE role_as='2' AND status='1' OR status='2'";
                 $query_run = mysqli_query($con, $query);
 
                 if (mysqli_num_rows($query_run) > 0) {
@@ -82,7 +86,7 @@ include('elements/popup/edit-user-form.php');
                                     </td>
                                     <td>
                                         <button type="button" class="btn show-edit-popup" data-userid="<?=$row['user_id'];?>"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                                        <button class="btn"><img src="../assets/images/archive.svg" alt="archive"></button>
+                                        <button class="btn archive-btn" data-userid="<?= $row['user_id']; ?>"><img src="../assets/images/archive.svg" alt="archive"></button>
                                     </td>
                                 </tr>
                         <?php
@@ -139,7 +143,7 @@ include('elements/popup/edit-user-form.php');
 
         <div class="card-body mx-5 mb-5">
             <?php
-            $query = "SELECT * FROM users WHERE role_as='1'"; // role_as 1 is to retrieve Teacher data from the database
+            $query = "SELECT * FROM users WHERE role_as='1' AND status='1' OR status='2'"; // role_as 1 is to retrieve Teacher data from the database
             $query_run = mysqli_query($con, $query);
 
             if (mysqli_num_rows($query_run) > 0) {
@@ -176,7 +180,7 @@ include('elements/popup/edit-user-form.php');
                         </td>
                         <td>
                             <button type="button" class="btn show-edit-popup" data-userid="<?=$row['user_id'];?>"><img src="../assets/images/pencil.svg" alt="edit"></button>
-                            <button class="btn"><img src="../assets/images/archive.svg" alt="archive"></button>
+                            <button class="btn archive-btn" data-userid="<?= $row['user_id']; ?>"><img src="../assets/images/archive.svg" alt="archive"></button>
                         </td>
                     </tr>
                     <?php
@@ -199,6 +203,5 @@ include('elements/popup/edit-user-form.php');
 <?php endif; ?>
     <!-- TABLE -->
 </section>
-
 </body>
 </html>

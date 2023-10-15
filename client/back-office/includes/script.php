@@ -1130,3 +1130,47 @@
 
 <!-- Profile Popup -->
 
+
+<!---------------------------------------------- ARCHIVING OF DATA ---------------------------------------------->
+
+<!-- Archive Users -->
+<script>
+$(document).ready(function() {
+    $(".archive-btn").click(function() {
+        var userId = $(this).data("userid");
+        var countdown = 3; // Initial countdown value
+        
+        // Send an AJAX request to update the user's status
+        $.ajax({
+            type: "POST",
+            url: "./backend/archive-data.php",
+            data: { userId: userId, status: 3 },
+            success: function(response) {
+                // Show the success alert
+                $("#archive-success-alert").fadeIn();
+                
+                // Update the countdown timer every second
+                var timerInterval = setInterval(function() {
+                    countdown--; // Decrement countdown
+                    $("#countdown").text(countdown); // Update countdown in the alert
+                    
+                    // If the countdown reaches 0, close the alert and reload the page
+                    if (countdown <= 0) {
+                        clearInterval(timerInterval);
+                        $("#archive-success-alert").fadeOut(function() {
+                            // Reload the page after the message closes
+                            location.reload();
+                        });
+                    }
+                }, 1000);
+            },
+            error: function(xhr, status, error) {
+                // Handle the error, if any
+                console.error(error);
+            }
+        });
+    });
+});
+</script>
+<!---------------------------------------------- ARCHIVING OF DATA ---------------------------------------------->
+
