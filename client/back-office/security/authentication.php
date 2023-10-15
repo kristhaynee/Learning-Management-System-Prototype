@@ -12,7 +12,7 @@ else{
     if($_SESSION['auth_role'] != "1" && $_SESSION['auth_role'] != "0")
     {
         $_SESSION['message']="You are not Authorised as ADMIN";
-        header("Location: ../public/login.php");
+        header("Location: ../public/Login.php");
         exit(0);
     }
 }
