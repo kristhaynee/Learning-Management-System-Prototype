@@ -215,13 +215,13 @@ include('includesClient/header.php');
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseFour"
                     aria-expanded="false"
-                    aria-controls="co#collapseFour"
+                    aria-controls="collapseFour"
                   >
                     PISA High Performing System for Tomorrow (HPST)
                   </button>
                 </h4>
                 <div
-                  id="co#collapseFour"
+                  id="collapseFour"
                   class="accordion-collapse collapse"
                   data-bs-parent="#accordionExample"
                 >
