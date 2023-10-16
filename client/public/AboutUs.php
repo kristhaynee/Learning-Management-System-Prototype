@@ -17,10 +17,7 @@ include('includesClient/header.php');
               About Us
             </h1>
             <p class="lead text-white header-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              iure adipisci molestiae provident temporibus itaque quaerat
-              necessitatibus eum nemo assumenda magni ipsam pariatur, veniam
-              quas dolorem repellat rem voluptas corporis?
+              Learn more about PISA!
             </p>
           </div>
         </div>
