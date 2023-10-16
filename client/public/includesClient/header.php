@@ -2,6 +2,8 @@
 <html lang="en">
   
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,7 +15,6 @@
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/scroll.css">
     <script defer src="../assets/js/scroll.js"></script>
-    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
   </head>
 
   <style>
