@@ -1,9 +1,9 @@
-<div id="preloader"></div>
 <?php
 session_start();
-include('elements/anchor_popup.php');
 include('includesClient/header.php');
+include('elements/anchor_popup.php');
 ?>
+<!-- <div id="preloader"></div> -->
 
 
 <head>

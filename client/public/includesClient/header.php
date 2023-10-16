@@ -2,7 +2,6 @@
 <html lang="en">
   
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="../assets/images/Logo.png">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -112,12 +111,6 @@
                             <a class="nav-link dropdown-toggle text-white px-3" href="standby.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <span>My Profile</span>';
-
-                          // if (!empty($profile_img)) {
-                          //     echo '<img src="' . $profile_img . '" alt="Profile" class="rounded-circle profile-image">';
-                          // } else {
-                          //     echo '<img src="../assets/images/profile_pic/default-profile-icon.jpg" alt="Default Profile" class="rounded-circle profile-image">';
-                          // }
                           echo '</div></a>
                           <ul class="dropdown-menu dropdown-menu-right fixed-width">
                                 <li class="dropdown-header">
@@ -140,7 +133,7 @@
                                   echo '<li><a class="dropdown-item" href="standby.php">User Hub</a></li>';
                                 
                                 if ($_SESSION['auth_role'] === 0 || 1) {
-                                  echo '<li><a class="dropdown-item" href="../back-office/dashboard.php?user_id=' . $_SESSION['auth_user']['user_id'] . '">Dashboard</a></li>';
+                                echo '<li><a class="dropdown-item" href="../back-office/dashboard.php">Dashboard</a></li>';
                                 }
                                 echo '<li>
                                     <hr class="dropdown-divider">
@@ -192,7 +185,14 @@
                 header.classList.remove('contactUs-header')
                 header.classList.remove('faqs-header')
                 document.body.classList.add('gradient-background')
-                // console.log("hi");
+              }
+
+              if(navlink.href.includes('Signup.php')){
+                header.classList.remove('homepage-header')
+                header.classList.remove('aboutUs-header')
+                header.classList.remove('contactUs-header')
+                header.classList.remove('faqs-header')
+                document.body.classList.add('gradient-background')
               }
 
               if(navlink.href.includes('standby.php')){
