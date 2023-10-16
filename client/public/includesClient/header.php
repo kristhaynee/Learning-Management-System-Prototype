@@ -13,6 +13,7 @@
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/scroll.css">
     <script defer src="../assets/js/scroll.js"></script>
+    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
   </head>
 
   <style>
