@@ -147,15 +147,10 @@ include('includesClient/header.php');
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It
-                    is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                  The PISA for Development initiative aims to encourage and facilitate PISA participation of 
+                  interested and motivated low- and middle-income countries. Find out more about which countries 
+                  are participating and it how it contributes to the Education Sustainable Development Goal for 
+                  quality and equity of learning outcomes for children, young people and adults.
                   </div>
                 </div>
               </div>
@@ -179,15 +174,9 @@ include('includesClient/header.php');
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It
-                    is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                  The PISA-based Test for Schools provides school-level estimates of performance and information 
+                  about the learning environment and students’ attitudes gathered from student questionnaires. 
+                  Find out more and how schools and their networks can take part.
                   </div>
                 </div>
               </div>
@@ -210,15 +199,11 @@ include('includesClient/header.php');
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    <strong>This is the second item's accordion body.</strong>
-                    It is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                  The International Vocational Education and Training (VET) Assessment project supports countries 
+                  in strengthening their skills systems by developing, piloting and implementing an internationally 
+                  standardised assessment of outcomes of initial VET programmes. Find out more about how the OECD has 
+                  established a step-by-step approach to the development of the assessment framework and the instruments 
+                  for countries to improve the relevance, quality, equity and effectiveness of initial VET programmes.
                   </div>
                 </div>
               </div>
@@ -241,15 +226,12 @@ include('includesClient/header.php');
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It
-                    is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                  The OECD’s PISA High Performing Systems for Tomorrow (HPST) project aims to establish a 
+                  comprehensive international framework for the future development of education systems, enabling 
+                  countries to reorient their education systems toward new purposes, policies and practices, 
+                  while considering the implications of artificial intelligence for the purposes of education. 
+                  Find out more about what we are setting out to lead countries wishing to move in this direction; 
+                  Education for Human Flourishing.
                   </div>
                 </div>
               </div>
