@@ -17,7 +17,9 @@ include('includesClient/header.php');
               About Us
             </h1>
             <p class="lead text-white header-text">
-              Learn more about PISA!
+              Unlocking Global Insights: Discover the World of PISA - Shaping Education for Tomorrow's Leaders 
+              and Innovators with In-Depth Assessments of 15-Year-Old Students' Performance in Reading, 
+              Mathematics, and Science            
             </p>
           </div>
         </div>
